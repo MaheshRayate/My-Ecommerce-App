@@ -5,7 +5,7 @@ import HomePageCard from "../../Components/HomePage/HomePageCard";
 
 const HomePage = () => {
   return (
-    <div className="">
+    <div className="px-5">
       <HomeCarousel />
       <HomePageCardContainer />
       {/* <HomePageCard /> */}
