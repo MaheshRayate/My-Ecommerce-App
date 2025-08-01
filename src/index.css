@@ -5,6 +5,7 @@
 @theme {
   /* Colors */
   --color-primary: #4f39f6;
+  --color-light-theme:#f8f8f8;
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
 
@@ -12,5 +13,23 @@
   /* Font-family */
   --font-roboto:"Roboto";
   --font-inter:"Inter";
+
+}
+
+@layer utilities {
+  .slick-prev:before,
+  .slick-next:before {
+    color: black !important;
+    /* display: none; */
+  }
+
+  .slick-list{
+    justify-content: space-around;
+  }
+
+  @media screen and (min-width:) {
+    
+  }
+
 
 }

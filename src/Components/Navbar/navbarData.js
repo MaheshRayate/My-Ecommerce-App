@@ -1,7 +1,8 @@
+import { nanoid } from "nanoid";
 const navbarData = {
   categories: [
     {
-      id: "women",
+      id: nanoid(),
       name: "Women",
       featured: [
         {
@@ -23,7 +24,7 @@ const navbarData = {
       ],
       sections: [
         {
-          id: "clothing",
+          id: nanoid(),
           name: "Clothing",
           items: [
             { name: "Tops", href: "#" },
@@ -38,7 +39,7 @@ const navbarData = {
           ],
         },
         {
-          id: "accessories",
+          id: nanoid(),
           name: "Accessories",
           items: [
             { name: "Watches", href: "#" },
@@ -50,7 +51,7 @@ const navbarData = {
           ],
         },
         {
-          id: "brands",
+          id: nanoid(),
           name: "Brands",
           items: [
             { name: "Full Nelson", href: "#" },
@@ -63,7 +64,7 @@ const navbarData = {
       ],
     },
     {
-      id: "men",
+      id: nanoid(),
       name: "Men",
       featured: [
         {
@@ -85,7 +86,7 @@ const navbarData = {
       ],
       sections: [
         {
-          id: "clothing",
+          id: nanoid(),
           name: "Clothing",
           items: [
             { name: "Tops", href: "#" },
@@ -98,7 +99,7 @@ const navbarData = {
           ],
         },
         {
-          id: "accessories",
+          id: nanoid(),
           name: "Accessories",
           items: [
             { name: "Watches", href: "#" },
@@ -110,7 +111,7 @@ const navbarData = {
           ],
         },
         {
-          id: "brands",
+          id: nanoid(),
           name: "Brands",
           items: [
             { name: "Re-Arranged", href: "#" },
@@ -123,8 +124,8 @@ const navbarData = {
     },
   ],
   pages: [
-    { name: "Company", href: "#" },
-    { name: "Stores", href: "#" },
+    { id: nanoid(), name: "Company", href: "#" },
+    { id: nanoid(), name: "Stores", href: "#" },
   ],
 };
 

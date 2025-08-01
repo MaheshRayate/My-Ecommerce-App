@@ -4,6 +4,7 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [navId, setNavId] = useState(null);
 
   const openSidebar = () => {
     setSidebarOpen(true);
@@ -15,7 +16,14 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ sidebarOpen, setSidebarOpen, openSidebar, closeSidebar }}
+      value={{
+        sidebarOpen,
+        setSidebarOpen,
+        openSidebar,
+        closeSidebar,
+        navId,
+        setNavId,
+      }}
     >
       {children}
     </AppContext.Provider>
