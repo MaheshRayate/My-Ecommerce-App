@@ -17,15 +17,22 @@
 }
 
 @layer utilities {
+
+
   .slick-prev:before,
   .slick-next:before {
     color: black !important;
     /* display: none; */
   }
 
-  .slick-list{
-    justify-content: space-around;
+  .home-carousel-container .slick-next:before{
+    display:none;
   }
+
+  .home-carousel-container .slick-prev:before{
+    display:none;
+  }
+
 
   @media screen and (min-width:) {
     

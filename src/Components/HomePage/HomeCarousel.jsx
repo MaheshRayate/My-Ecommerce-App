@@ -16,8 +16,8 @@ const HomeCarousel = () => {
     cssEase: "linear",
   };
   return (
-    <div className=" w-9/10 mx-auto mt-5 bg-black">
-      <div className="slider-container">
+    <div className=" w-9/10 pt-15 mx-auto border">
+      <div className="slider-container home-carousel-container">
         <Slider {...settings}>
           {homeCarouselData.map((item) => {
             const { id, url } = item;

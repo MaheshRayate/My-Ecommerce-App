@@ -8,7 +8,10 @@ const HomePage = () => {
     <div className="px-5">
       <HomeCarousel />
       <HomePageCardContainer />
-      {/* <HomePageCard /> */}
+      <HomePageCardContainer />
+      <HomePageCardContainer />
+      <HomePageCardContainer />
+      <HomePageCardContainer />
     </div>
   );
 };

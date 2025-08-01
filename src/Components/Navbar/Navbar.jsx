@@ -15,7 +15,7 @@ const Navbar = () => {
   return (
     <nav
       onMouseOver={handleMouseOver}
-      className="border-b border-gray-100 shadow-lg flex justify-between lg:justify-start lg:gap-10 items-center px-4 lg:px-10"
+      className="fixed z-20 w-full bg-white border-b border-gray-100 shadow-lg flex justify-between lg:justify-start lg:gap-10 items-center px-4 lg:px-10"
     >
       <div>
         <img

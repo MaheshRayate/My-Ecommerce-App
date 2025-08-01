@@ -40,8 +40,8 @@ const HomePageCardContainer = () => {
     ],
   };
   return (
-    <div className="border w-[90%] mx-auto mt-10">
-      <Slider className="" {...settings}>
+    <div className="border w-[90%] mx-auto mt-10 ">
+      <Slider className="slider-container home-card-container" {...settings}>
         {Array.from({ length: 9 }).map((_, i) => (
           <HomePageCard key={i} />
         ))}
