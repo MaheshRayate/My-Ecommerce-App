@@ -17,6 +17,9 @@ const Navlinks = () => {
                 console.log(navId);
               }}
               className="cursor-pointer self-stretch nav-link-btn"
+              style={{
+                borderBottom: navId === id ? "3px solid #4f39f6" : "none",
+              }}
               key={id}
             >
               {name}

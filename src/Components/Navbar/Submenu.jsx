@@ -31,7 +31,7 @@ const Submenu = () => {
       onMouseLeave={handleMouseLeave}
       className={` ${
         displayCategory ? `visible opacity-100` : `invisible opacity-0`
-      } hidden z-10 absolute left-1/2 -translate-x-1/2  transition-all duration-500  bg-light-theme lg:grid grid-cols-3 px-10 py-10 border w-9/10`}
+      } hidden z-10 absolute left-1/2 -translate-x-1/2  transition-all duration-500  bg-light-theme lg:grid grid-cols-3 px-10 py-15 border  w-9/10`}
     >
       {displayCategory?.sections?.map((section) => {
         const { id, name, items } = section;

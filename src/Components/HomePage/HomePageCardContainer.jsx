@@ -5,7 +5,7 @@ import HomePageCard from "./HomePageCard";
 const HomePageCardContainer = () => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 1000,
     slidesToShow: 4,
     slidesToScroll: 4,
@@ -40,12 +40,15 @@ const HomePageCardContainer = () => {
     ],
   };
   return (
-    <div className="border w-[90%] mx-auto mt-10 ">
-      <Slider className="slider-container home-card-container" {...settings}>
-        {Array.from({ length: 9 }).map((_, i) => (
-          <HomePageCard key={i} />
-        ))}
-      </Slider>
+    <div className="mx-auto w-[90%] my-10">
+      <h2 className="px-2 text-2xl font-inter  font-bold">Men Shirts</h2>
+      <div className="slider-container mt-2">
+        <Slider className=" home-card-container" {...settings}>
+          {Array.from({ length: 9 }).map((_, i) => (
+            <HomePageCard key={i} />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };

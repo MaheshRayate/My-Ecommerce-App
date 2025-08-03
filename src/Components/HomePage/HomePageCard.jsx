@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const HomePageCard = () => {
   return (
-    <div className="relative border border-gray-200 shadow-lg text-center px-2 py-2">
+    <div className="relative mx-2 md:mx-1 border border-gray-200 shadow-lg text-center px-2 py-2">
       <img
         src="https://media.landmarkshops.in/cdn-cgi/image/h=1200,w=1200,q=85,fit=cover/lifestyle/1000015324615-Brown-Chocolate-1000015324615_01-2100.jpg"
         alt=""

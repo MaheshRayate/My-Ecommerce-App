@@ -6,6 +6,7 @@
   /* Colors */
   --color-primary: #4f39f6;
   --color-light-theme:#f8f8f8;
+  --color-primary-light:#00bcff
   --color-tahiti: #3ab7bf;
   --color-bermuda: #78dcca;
 
@@ -13,6 +14,7 @@
   /* Font-family */
   --font-roboto:"Roboto";
   --font-inter:"Inter";
+  --font-inria:"Inria Sans"
 
 }
 

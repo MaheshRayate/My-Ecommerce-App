@@ -10,7 +10,7 @@ const Sidebar = () => {
     <div
       className={`${
         sidebarOpen ? `visible opacity-100` : `invisible opacity-0`
-      } transition-all h-screen overflow-y-scroll duration-1000 z-10 fixed top-0 left-0 w-screen bg-white border linear lg:hidden py-5 px-4`}
+      } transition-all h-screen overflow-y-scroll duration-1000 z-25 fixed top-0 left-0 w-screen bg-white border linear lg:hidden py-5 px-4`}
     >
       <button
         className="absolute top-2 right-2 cursor-pointer"
