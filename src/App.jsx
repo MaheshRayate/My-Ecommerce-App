@@ -1,11 +1,35 @@
 import { useState } from "react";
 import { useGlobalContext } from "./Context/Context";
 
-import Navbar from "./Components/Navbar/Navbar";
-import Sidebar from "./Components/Navbar/Sidebar";
-import Submenu from "./Components/Navbar/Submenu";
-import HomePage from "./Pages/HomePage/HomePage";
-import Footer from "./Components/Footer/Footer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import MainLayout from "./Layouts/MainLayout";
+
+import { HomePage, ProductPage, ErrorPage } from "./Pages";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+
+      {
+        path: "/products",
+        element: <ProductPage />,
+      },
+      
+    ],
+  },
+  {
+    path: "/about",
+    element: <h2>About Page</h2>,
+  },
+  {
+    path: "/contact",
+    element: <h2>Contact Page</h2>,
+  },
+]);
 
 function App() {
   const { sidebarOpen } = useGlobalContext();
@@ -13,11 +37,7 @@ function App() {
 
   return (
     <>
-      <Navbar />
-      <Sidebar />
-      <Submenu />
-      <HomePage />
-      <Footer />
+      <RouterProvider router={router} />
     </>
   );
 }

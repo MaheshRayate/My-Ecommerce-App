@@ -16,7 +16,7 @@ const HomeCarousel = () => {
     cssEase: "linear",
   };
   return (
-    <div className=" w-9/10 pt-15 mx-auto border">
+    <div className=" w-9/10  mx-auto border">
       <div className="slider-container home-carousel-container">
         <Slider {...settings}>
           {homeCarouselData.map((item) => {
@@ -24,7 +24,7 @@ const HomeCarousel = () => {
             return (
               <div>
                 <img
-                  className="h-50 object-fill  md:h-auto lg:h-auto md:w-full"
+                  className="h-50 object-contain  md:h-auto lg:h-auto md:w-full"
                   src={url}
                   alt={`carousel-${id}`}
                 />

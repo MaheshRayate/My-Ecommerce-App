@@ -58,14 +58,14 @@ const Footer = () => {
           <div className="flex items-center gap-2">
             <MdOutlineMail className="size-10  border border-gray-100 p-2 rounded-full" />
             <div>
-              <h1 className="lg:text-xl">thesouledstore@gmail.com</h1>
+              <h1 className="lg:text-xl">thetrendystore@gmail.com</h1>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <IoHelp className="size-10  border border-gray-100 p-2 rounded-full" />
             <div>
-              <h1 className="lg:text-xl">help.thesouledstore.com</h1>
+              <h1 className="lg:text-xl">help.thetrendystore.com</h1>
             </div>
           </div>
         </div>
