@@ -39,6 +39,7 @@ const Sidebar = () => {
                               to="/products"
                               className="block hover:bg-blue-100 hover:rounded transition-all duration-400 hover:pl-2"
                               key={name}
+                              onClick={closeSidebar}
                             >
                               {name}
                             </Link>
