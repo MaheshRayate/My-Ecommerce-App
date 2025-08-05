@@ -27,7 +27,7 @@ const navbarData = {
           id: nanoid(),
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
+            { name: "Tops", href: "/products" },
             { name: "Dresses", href: "#" },
             { name: "Pants", href: "#" },
             { name: "Denim", href: "#" },
