@@ -5,27 +5,24 @@ import { GoSortAsc } from "react-icons/go";
 import { CiFilter } from "react-icons/ci";
 import MobileFilter from "./MobileFilter";
 import MobileSortBy from "./MobileSortBy";
+import { productData } from "./ProductPageData";
+import { nanoid } from "nanoid";
+import PaginationContainer from "./PaginationContainer";
 
 const Product = () => {
   const [showBox, setShowBox] = useState(true);
   const [mobileFilter, setMobileFilter] = useState(false);
   const [mobileSort, setMobileSort] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     const windowHeight = window.innerHeight;
-  //     const docHeight = document.documentElement.scrollHeight;
+  const productsPerPage = 16;
 
-  //     const isAtBottom = scrollTop + windowHeight >= docHeight - 800;
+  const totalPages = Math.ceil(productData.length / productsPerPage);
 
-  //     setShowBox(!isAtBottom);
-  //   };
+  const indexOfLast = currentPage * productsPerPage;
+  const indexOfFirst = indexOfLast - productsPerPage;
 
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
+  const currentProducts = productData.slice(indexOfFirst, indexOfLast);
 
   const handleMobileFilter = () => {
     setMobileFilter(!mobileFilter);
@@ -40,27 +37,21 @@ const Product = () => {
     <div>
       <div className="flex items-start product-container">
         <ProductPageFilter />
-        <div className="w-full px-3 grid grid-cols-2 gap-x-1 gap-y-1 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-5">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+        <div>
+          <div className="w-full px-3 grid grid-cols-2 gap-x-1 gap-y-1 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-5">
+            {currentProducts.map((product) => {
+              const id = nanoid();
+              return <ProductCard key={id} {...product} />;
+            })}
+          </div>
+          <PaginationContainer
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
         </div>
       </div>
+
       {/* Mobile Filter and Sort By */}
       {showBox && (
         <div>
