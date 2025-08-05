@@ -2,6 +2,7 @@ import React from "react";
 import { IoClose } from "react-icons/io5";
 import navbarData from "./navbarData";
 import { useGlobalContext } from "../../Context/Context";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const { sidebarOpen, closeSidebar } = useGlobalContext();
@@ -34,13 +35,13 @@ const Sidebar = () => {
                         {items.map((item) => {
                           const { name, href } = item;
                           return (
-                            <a
+                            <Link
+                              to="/products"
                               className="block hover:bg-blue-100 hover:rounded transition-all duration-400 hover:pl-2"
                               key={name}
-                              href={href}
                             >
                               {name}
-                            </a>
+                            </Link>
                           );
                         })}
                       </div>
