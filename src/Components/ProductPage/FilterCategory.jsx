@@ -24,7 +24,9 @@ const FilterCategory = ({ label, list }) => {
           )}
         </button>
       </div>
-      {clicked && <FilterList filterList={list} />}
+      {clicked && (
+        <FilterList filterList={list} category={label.toLowerCase()} />
+      )}
     </div>
   );
 };

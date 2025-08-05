@@ -8,6 +8,56 @@ import MobileSortBy from "./MobileSortBy";
 import { productData } from "./ProductPageData";
 import { nanoid } from "nanoid";
 import PaginationContainer from "./PaginationContainer";
+import { useSelector } from "react-redux";
+
+const applyFilters = (products, filters) => {
+  return products.filter((product) => {
+    const {
+      categories,
+      subcategories,
+      brands,
+      gender,
+      size,
+      price,
+      color,
+      discount,
+      fabric,
+    } = filters;
+
+    const categoryMatch = categories.length
+      ? categories.includes(product.category)
+      : true;
+    const subcategoryMatch = subcategories.length
+      ? subcategories.includes(product.subcategory)
+      : true;
+    const brandMatch = brands.length ? brands.includes(product.brand) : true;
+    const genderMatch = gender.length ? gender.includes(product.gender) : true;
+    const sizeMatch = size.length ? size.includes(product.size) : true;
+    const colorMatch = color.length ? color.includes(product.color) : true;
+    const discountMatch = discount.length
+      ? discount.some((d) => product.discount >= parseInt(d))
+      : true;
+    const fabricMatch = fabric.length ? fabric.includes(product.fabric) : true;
+    const priceMatch = price.length
+      ? price.some((range) => {
+          const [min, max] = range.split("-").map(Number);
+          return product.price >= min && product.price <= max;
+        })
+      : true;
+
+    return (
+      categoryMatch &&
+      subcategoryMatch &&
+      brandMatch &&
+      genderMatch &&
+      sizeMatch &&
+      colorMatch &&
+      discountMatch &&
+      priceMatch &&
+      fabricMatch
+    );
+  });
+};
 
 const Product = () => {
   const [showBox, setShowBox] = useState(true);
@@ -15,14 +65,16 @@ const Product = () => {
   const [mobileSort, setMobileSort] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Filtering logic
+  const filters = useSelector((state) => state.productFilter.value);
+  const filteredProducts = applyFilters(productData, filters);
+
   const productsPerPage = 16;
-
-  const totalPages = Math.ceil(productData.length / productsPerPage);
-
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
   const indexOfLast = currentPage * productsPerPage;
   const indexOfFirst = indexOfLast - productsPerPage;
 
-  const currentProducts = productData.slice(indexOfFirst, indexOfLast);
+  const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
 
   const handleMobileFilter = () => {
     setMobileFilter(!mobileFilter);
