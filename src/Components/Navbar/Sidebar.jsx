@@ -36,7 +36,7 @@ const Sidebar = () => {
                           const { name, href } = item;
                           return (
                             <Link
-                              to="/products"
+                              to={href}
                               className="block hover:bg-blue-100 hover:rounded transition-all duration-400 hover:pl-2"
                               key={name}
                               onClick={closeSidebar}
