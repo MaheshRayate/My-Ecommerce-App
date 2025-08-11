@@ -40,11 +40,17 @@ const fetchProducts = async ({ queryKey }) => {
 export const useProducts = () => {
   // Read filters from Redux
   const filters = useSelector((state) => state.productFilter.value);
+  const location = useLocation();
+  const [, topLavelCategory, thirdLavelCategory] = location.pathname.split("/");
 
   return useQuery({
-    queryKey: ["products", { filters }],
+    queryKey: ["products", { filters, topLavelCategory, thirdLavelCategory }],
     queryFn: fetchProducts,
     keepPreviousData: true,
-    enabled: filters && Object.keys(filters).length > 0,
+    enabled:
+      filters &&
+      Object.keys(filters).length > 0 &&
+      !!topLavelCategory &&
+      !!thirdLavelCategory,
   });
 };
