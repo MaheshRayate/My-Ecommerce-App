@@ -1,41 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  value: {
-    categories: [],
-    subcategories: [],
-    brands: [],
-    gender: [],
-    size: [],
-    price: [],
-    color: [],
-    discount: [],
-    fabric: [],
-  },
-};
+const savedFilters = localStorage.getItem("filters")
+  ? JSON.parse(localStorage.getItem("filters"))
+  : {
+      categories: [],
+      brand: [],
+      gender: [],
+      size: [],
+      price: [],
+      color: [],
+      discount: [],
+      fabric: [],
+    };
 
 export const productFilterSlice = createSlice({
   name: "productFilter",
-  initialState,
+  initialState: {
+    value: savedFilters,
+  },
 
   reducers: {
     setFilter: (state, action) => {
       const { key, value } = action.payload;
       state.value[key] = value;
+      localStorage.setItem("filters", JSON.stringify(state.value)); // save to localStorage
     },
 
     clearAllFilters: (state) => {
       state.value = {
         categories: [],
-        subcategories: [],
-        brands: [],
+        brand: [],
         gender: [],
         size: [],
         price: [],
-        color: [],
         discount: [],
-        fabric: [],
+        color: [],
       };
+
+      localStorage.removeItem("filters");
     },
   },
 });

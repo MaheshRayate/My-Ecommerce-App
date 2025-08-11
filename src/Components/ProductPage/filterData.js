@@ -2,30 +2,7 @@ import { nanoid } from "nanoid";
 export const filterData = [
   {
     id: nanoid(),
-    label: "Department",
-    list: [
-      { id: nanoid(), label: "men", count: 300 },
-      { id: nanoid(), label: "women", count: 350 },
-      { id: nanoid(), label: "kids", count: 460 },
-    ],
-  },
-
-  {
-    id: nanoid(),
     label: "Categories",
-    list: [
-      { id: nanoid(), label: "casual wear", count: 300 },
-      { id: nanoid(), label: "formal wear", count: 350 },
-      { id: nanoid(), label: "westernwear", count: 460 },
-      { id: nanoid(), label: "Indian anf Fusion Wear", count: 460 },
-      { id: nanoid(), label: "boys", count: 460 },
-      { id: nanoid(), label: "girls", count: 460 },
-    ],
-  },
-
-  {
-    id: nanoid(),
-    label: "Subcategories",
     list: [
       { id: nanoid(), label: "shirts", count: 567 },
       { id: nanoid(), label: "tops", count: 80 },
@@ -33,22 +10,26 @@ export const filterData = [
       { id: nanoid(), label: "kurtas", count: 89 },
       { id: nanoid(), label: "trousers", count: 89 },
       { id: nanoid(), label: "jackets", count: 89 },
+      { id: nanoid(), label: "casual wear", count: 300 },
+      { id: nanoid(), label: "formal wear", count: 350 },
+      { id: nanoid(), label: "westernwear", count: 460 },
+      { id: nanoid(), label: "Indian", count: 460 },
     ],
   },
 
   {
     id: nanoid(),
-    label: "Brands",
+    label: "Brand",
     list: [
       { id: nanoid(), label: "allen solly", count: 376 },
       { id: nanoid(), label: "arrow", count: 90 },
       { id: nanoid(), label: "peter england", count: 460 },
-      { id: nanoid(), label: "peter england", count: 460 },
-      { id: nanoid(), label: "peter england", count: 460 },
+      { id: nanoid(), label: "adidas", count: 460 },
+      { id: nanoid(), label: "puma", count: 460 },
       { id: nanoid(), label: "campus sutra", count: 460 },
       { id: nanoid(), label: "vastrado", count: 460 },
       { id: nanoid(), label: "h&m", count: 460 },
-      { id: nanoid(), label: "peter england", count: 460 },
+      { id: nanoid(), label: "snitch", count: 460 },
     ],
   },
   {
@@ -78,23 +59,7 @@ export const filterData = [
       { id: nanoid(), label: "12 - 13 Years", count: 460 },
     ],
   },
-  {
-    id: nanoid(),
-    label: "Size",
-    list: [
-      { id: nanoid(), label: "S", count: 376 },
-      { id: nanoid(), label: "M", count: 90 },
-      { id: nanoid(), label: "L", count: 460 },
-      { id: nanoid(), label: "XL", count: 460 },
-      { id: nanoid(), label: "XXL", count: 460 },
-      { id: nanoid(), label: "3 - 4 Years", count: 460 },
-      { id: nanoid(), label: "5 - 6 Years", count: 460 },
-      { id: nanoid(), label: "7 - 8 Years", count: 460 },
-      { id: nanoid(), label: "8 - 9 Years", count: 460 },
-      { id: nanoid(), label: "10 - 11 Years", count: 460 },
-      { id: nanoid(), label: "12 - 13 Years", count: 460 },
-    ],
-  },
+
   {
     id: nanoid(),
     label: "Price",
@@ -145,23 +110,6 @@ export const filterData = [
       { id: nanoid(), label: "Purple", count: 376 },
       { id: nanoid(), label: "Peach", count: 376 },
       { id: nanoid(), label: "Grey", count: 376 },
-    ],
-  },
-  {
-    id: nanoid(),
-    label: "Fabric",
-    list: [
-      { id: nanoid(), label: "Cotton", count: 376 },
-      { id: nanoid(), label: "Linen", count: 142 },
-      { id: nanoid(), label: "Polyester", count: 289 },
-      { id: nanoid(), label: "Silk Blend", count: 87 },
-      { id: nanoid(), label: "Rayon", count: 114 },
-      { id: nanoid(), label: "Wool", count: 39 },
-      { id: nanoid(), label: "Viscose", count: 73 },
-      { id: nanoid(), label: "Denim", count: 98 },
-      { id: nanoid(), label: "Nylon", count: 56 },
-      { id: nanoid(), label: "Khadi", count: 21 },
-      { id: nanoid(), label: "Acrylic", count: 47 },
     ],
   },
 ];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../Features/ProductFilter/productFilterSlice";
 
@@ -6,12 +6,12 @@ const FilterList = ({ filterList, category }) => {
   const dispatch = useDispatch();
   const selected = useSelector((state) => state.productFilter.value[category]);
 
+
   const handleChange = (label) => {
     const isSelected = selected.includes(label);
     const updated = isSelected
       ? selected.filter((item) => item !== label)
       : [...selected, label];
-
     dispatch(setFilter({ key: category, value: updated }));
   };
 

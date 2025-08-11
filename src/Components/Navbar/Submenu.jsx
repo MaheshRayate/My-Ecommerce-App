@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { useGlobalContext } from "../../Context/Context";
 import navbarData from "./navbarData";
+import { Link } from "react-router-dom";
 
 const Submenu = () => {
   const { navId, setNavId } = useGlobalContext();
@@ -31,7 +32,7 @@ const Submenu = () => {
       onMouseLeave={handleMouseLeave}
       className={` ${
         displayCategory ? `visible opacity-100` : `invisible opacity-0`
-      } hidden z-10 absolute left-1/2 -translate-x-1/2  transition-all duration-500  bg-light-theme lg:grid grid-cols-3 px-10 py-15 border  w-9/10`}
+      } hidden z-10 fixed left-1/2 -translate-x-1/2  transition-all duration-500  bg-light-theme lg:grid grid-cols-3 px-10 py-15 border  w-9/10`}
     >
       {displayCategory?.sections?.map((section) => {
         const { id, name, items } = section;
@@ -42,12 +43,12 @@ const Submenu = () => {
               {items?.map((item) => {
                 const { name, href } = item;
                 return (
-                  <a
-                    href={href}
+                  <Link
+                    to={href}
                     className="block hover:px-2 hover:bg-blue-100 hover:rounded transition-all duration-500"
                   >
                     {name}
-                  </a>
+                  </Link>
                 );
               })}
             </div>

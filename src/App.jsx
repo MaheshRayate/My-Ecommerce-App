@@ -1,10 +1,6 @@
-import { useState } from "react";
 import { useGlobalContext } from "./Context/Context";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import MainLayout from "./Layouts/MainLayout";
-
 import { HomePage, ProductPage, ErrorPage } from "./Pages";
 
 const router = createBrowserRouter([
@@ -15,10 +11,9 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
 
       {
-        path: "/products",
+        path: "/:gender/:categorySlug",
         element: <ProductPage />,
       },
-      
     ],
   },
   {

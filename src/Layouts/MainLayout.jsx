@@ -3,6 +3,7 @@ import Footer from "../Components/Footer/Footer";
 import Sidebar from "../Components/Navbar/Sidebar";
 import Submenu from "../Components/Navbar/Submenu";
 import { Outlet } from "react-router-dom";
+import FilterWatcher from "../Components/ProductPage/FilterWatcher";
 
 const MainLayout = () => {
   return (
@@ -10,6 +11,7 @@ const MainLayout = () => {
       <Navbar />
       <Sidebar />
       <Submenu />
+      <FilterWatcher />
       <main className="pt-12">
         <Outlet />
       </main>

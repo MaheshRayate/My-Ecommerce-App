@@ -5,83 +5,32 @@ import { GoSortAsc } from "react-icons/go";
 import { CiFilter } from "react-icons/ci";
 import MobileFilter from "./MobileFilter";
 import MobileSortBy from "./MobileSortBy";
-import { productData } from "./ProductPageData";
 import { nanoid } from "nanoid";
 import PaginationContainer from "./PaginationContainer";
-import { useSelector } from "react-redux";
+import { useProducts } from "../../Custom Hooks/useProducts";
+import axios from "axios";
 
-const applyFilters = (products, filters) => {
-  return products.filter((product) => {
-    const {
-      categories,
-      subcategories,
-      brands,
-      gender,
-      size,
-      price,
-      color,
-      discount,
-      fabric,
-    } = filters;
-
-    const categoryMatch = categories.length
-      ? categories.includes(product.category)
-      : true;
-    const subcategoryMatch = subcategories.length
-      ? subcategories.includes(product.subcategory)
-      : true;
-    const brandMatch = brands.length ? brands.includes(product.brand) : true;
-    const genderMatch = gender.length ? gender.includes(product.gender) : true;
-    const sizeMatch = size.length ? size.includes(product.size) : true;
-    const colorMatch = color.length ? color.includes(product.color) : true;
-    const discountMatch = discount.length
-      ? discount.some((d) => product.discount >= parseInt(d))
-      : true;
-    const fabricMatch = fabric.length ? fabric.includes(product.fabric) : true;
-    const priceMatch = price.length
-      ? price.some((range) => {
-          const [min, max] = range.split("-").map(Number);
-          return product.price >= min && product.price <= max;
-        })
-      : true;
-
-    return (
-      categoryMatch &&
-      subcategoryMatch &&
-      brandMatch &&
-      genderMatch &&
-      sizeMatch &&
-      colorMatch &&
-      discountMatch &&
-      priceMatch &&
-      fabricMatch
-    );
-  });
-};
+import { useQuery } from "@tanstack/react-query";
 
 const Product = () => {
   const [showBox, setShowBox] = useState(true);
   const [mobileFilter, setMobileFilter] = useState(false);
   const [mobileSort, setMobileSort] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
 
-  // Filtering logic
-  const filters = useSelector((state) => state.productFilter.value);
-  const filteredProducts = applyFilters(productData, filters);
+  // const { isPending, data } = useQuery({
+  //   queryKey: ["products"],
+  //   queryFn: () => axios.get("http://localhost:3000/api/v1/products"),
+  // });
 
-  const productsPerPage = 16;
-  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-  const indexOfLast = currentPage * productsPerPage;
-  const indexOfFirst = indexOfLast - productsPerPage;
+  const { data, isLoading, error } = useProducts();
 
-  const currentProducts = filteredProducts.slice(indexOfFirst, indexOfLast);
+  // console.log("Data-", data?.data?.products);
 
   const handleMobileFilter = () => {
     setMobileFilter(!mobileFilter);
   };
 
   const handleMobileSortBy = () => {
-    // alert("Hello");
     setMobileSort(!mobileSort);
   };
 
@@ -91,16 +40,16 @@ const Product = () => {
         <ProductPageFilter />
         <div>
           <div className="w-full px-3 grid grid-cols-2 gap-x-1 gap-y-1 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-5">
-            {currentProducts.map((product) => {
-              const id = nanoid();
-              return <ProductCard key={id} {...product} />;
-            })}
+            {isLoading ? (
+              <h1 className="text-3xl">Loading...</h1>
+            ) : (
+              data?.data?.products.map((product) => {
+                const id = nanoid();
+                return <ProductCard key={id} {...product} />;
+              })
+            )}
           </div>
-          <PaginationContainer
-            totalPages={totalPages}
-            currentPage={currentPage}
-            onPageChange={(page) => setCurrentPage(page)}
-          />
+          <PaginationContainer />
         </div>
       </div>
 
