@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const appendArrayParams = (params, key, values) => {
   if (Array.isArray(values) && values.length > 0) {
@@ -10,6 +11,9 @@ const appendArrayParams = (params, key, values) => {
 
 const fetchProducts = async ({ queryKey }) => {
   const [_key, { filters }] = queryKey;
+  console.log(window.location.pathname.split("/"));
+  const [comma, topLavelCategory, thirdLavelCategory] =
+    window.location.pathname.split("/");
 
   const params = new URLSearchParams();
 
@@ -24,14 +28,11 @@ const fetchProducts = async ({ queryKey }) => {
   appendArrayParams(params, "discount", filters.discount);
   appendArrayParams(params, "fabric", filters.fabric);
 
-  // Single values
-  //   if (sort) params.append("sort", sort);
-  //   if (page) params.append("page", page);
-
-  // console.log(`http://localhost:3000/api/v1/products?${params.toString()}`);
-  console.log(location);
+  console.log(
+    `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
+  );
   const res = await axios.get(
-    `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}`
+    `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
   );
   return res.data;
 };
@@ -39,7 +40,6 @@ const fetchProducts = async ({ queryKey }) => {
 export const useProducts = () => {
   // Read filters from Redux
   const filters = useSelector((state) => state.productFilter.value);
-  // console.log(filters);
 
   return useQuery({
     queryKey: ["products", { filters }],

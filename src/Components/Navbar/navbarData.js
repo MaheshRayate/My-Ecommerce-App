@@ -27,7 +27,7 @@ const navbarData = {
           id: nanoid(),
           name: "Clothing",
           items: [
-            { name: "Tops", href: "/women/tops" },
+            { name: "Tops", href: "/women/top" },
             { name: "Dresses", href: "#" },
             { name: "Pants", href: "#" },
             { name: "Denim", href: "#" },
@@ -90,9 +90,9 @@ const navbarData = {
           name: "Clothing",
           items: [
             { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
+            { name: "Pants", href: "/men/men_jeans" },
             { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "/men/tshirts" },
+            { name: "T-Shirts", href: "/men/shirts" },
             { name: "Jackets", href: "#" },
             { name: "Activewear", href: "#" },
             { name: "Browse All", href: "#" },
