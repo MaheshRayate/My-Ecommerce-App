@@ -5,7 +5,7 @@ import FilterCategory from "./FilterCategory";
 
 const ProductPageFilter = () => {
   return (
-    <div className="hidden md:block md:w-[40%] lg:w-[40%]">
+    <div className="hidden md:block md:w-4/10">
       <h1 className="text-xl font-bold md:w-8/10 lg:w-6/10 mx-auto">FILTERS</h1>
 
       <div>

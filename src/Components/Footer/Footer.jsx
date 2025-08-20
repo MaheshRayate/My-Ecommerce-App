@@ -31,7 +31,7 @@ const Footer = () => {
         })}
       </div>
 
-      <div className="border-t border-gray-100 w-9/10 mx-auto flex flex-col items-center text-center lg:flex-row py-3 justify-center">
+      <div className="border-t border-gray-100 w-9/10 mx-auto flex flex-col items-center text-center py-3 justify-center">
         <div className="flex w-2/10 justify-evenly">
           <a href="">
             <FaInstagram className="size-10 text-white" />

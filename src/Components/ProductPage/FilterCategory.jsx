@@ -7,7 +7,7 @@ const FilterCategory = ({ label, list }) => {
   const [clicked, setClicked] = useState(false);
 
   return (
-    <div className="relative py-2 md:w-8/10 lg:w-6/10 mx-auto">
+    <div className="relative py-2 md:w-8/10 lg:w-7/10 mx-auto">
       <div className="flex items-center">
         <h1 className="text-xl">{label}</h1>
 

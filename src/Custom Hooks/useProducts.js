@@ -31,9 +31,12 @@ const fetchProducts = async ({ queryKey }) => {
   console.log(
     `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
   );
-  const res = await axios.get(
-    `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
-  );
+
+  const url = params.toString()
+    ? `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
+    : `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`;
+
+  const res = await axios.get(url);
   return res.data;
 };
 
