@@ -1,23 +1,24 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { PiKeyReturn } from "react-icons/pi";
 import { BsFillCartFill } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
 
-
 import axios from "axios";
 import ProductReviewContainer from "../../Components/ProductDetailPage/ProductReviewContainer";
 import ProductDetailsAccordion from "../../Components/ProductDetailPage/ProductDetailsAccordion";
+import SimilarProductContainer from "../../Components/ProductDetailPage/SimilarProductContainer";
 
 const ProductDetailsPage = () => {
   const [selectedSize, setSelectedSize] = useState(null);
 
   const location = useLocation();
   const id = location.pathname.split("/")[1];
+  // const { id } = useParams();
 
   const { data, isLoading } = useQuery({
-    queryKey: ["productDetails"],
+    queryKey: ["productDetails", id],
 
     queryFn: async () =>
       axios.get(
@@ -117,6 +118,10 @@ const ProductDetailsPage = () => {
           <ProductReviewContainer />
         </div>
       </div>
+      <SimilarProductContainer
+        topLavelCategory={data?.data?.data?.product?.topLavelCategory}
+        thirdLavelCategory={data?.data?.data?.product?.thirdLavelCategory}
+      />
     </div>
   );
 };

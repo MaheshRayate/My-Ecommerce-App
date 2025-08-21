@@ -31,8 +31,10 @@ const ProductAccordionItem = ({ title }) => {
         >
           {productDetails.map((detail) => {
             return (
-              <div key={nanoid()}>
-                <h2 className="capitalize font-nata-sans">{detail}</h2>
+              <div key={nanoid()} className="md:my-1">
+                <h2 className="capitalize font-nata-sans text-gray-600">
+                  {detail}
+                </h2>
                 <p>...</p>
               </div>
             );
