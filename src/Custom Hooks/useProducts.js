@@ -37,6 +37,7 @@ const fetchProducts = async ({ queryKey }) => {
     : `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`;
 
   const res = await axios.get(url);
+  console.log(url);
   return res.data;
 };
 
