@@ -52,7 +52,7 @@ const ProductDetailsPage = () => {
         {/* Product Info */}
 
         <div className="py-5 md:min-w-[55%]">
-          <h1 className="text-4xl font-inter font-semibold">
+          <h1 className="text-3xl lg:text-3xl font-inter font-semibold">
             {data?.data?.data?.product?.brand}
           </h1>
           <h3 className="text-xl font-semibold text-gray-500">
