@@ -7,6 +7,7 @@ import { IoCartSharp } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { setNavId, sidebarOpen, openSidebar } = useGlobalContext();
@@ -62,9 +63,9 @@ const Navbar = () => {
           <span className="absolute right-39 top-2">
             <IoSearch className="text-primary font-bold text-xl" />
           </span>
-          <button className="cursor-pointer">
+          <Link to="/cart/bag" className="cursor-pointer">
             <IoCartSharp className=" text-4xl text-primary" />
-          </button>
+          </Link>
           <button className="cursor-pointer">
             <IoHeartOutline className=" text-4xl text-primary" />
           </button>
