@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CartSummaryContainer = () => {
   return (
-    <div className=" border-gray-300">
+    <div className="border-gray-300 border">
       <div className="border-b border-gray-300">
         <h1 className="p-2 text-2xl font-nata-sans font-semibold">
           Cart Summary
@@ -31,9 +32,12 @@ const CartSummaryContainer = () => {
             <p className="font-semibold">₹2897</p>
           </div>
         </ul>
-        <button className="block bg-primary w-full py-2 text-white text-2xl font-nata-sans cursor-pointer">
+        <Link
+          to="/cart/address"
+          className="block bg-primary w-full py-2 text-center text-white text-2xl font-nata-sans cursor-pointer"
+        >
           PLACE ORDER
-        </button>
+        </Link>
       </div>
     </div>
   );
