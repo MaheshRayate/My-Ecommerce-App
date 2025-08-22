@@ -34,9 +34,9 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-x-1">
-        <button className="lg:hidden cursor-pointer">
+        <Link to="/cart/bag" className="lg:hidden cursor-pointer">
           <IoCartSharp className="text-3xl text-primary" />
-        </button>
+        </Link>
         <button className="lg:hidden cursor-pointer">
           <IoHeartOutline className=" text-3xl text-primary" />
         </button>
