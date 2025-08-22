@@ -20,7 +20,7 @@ const CartItem = () => {
   };
 
   return (
-    <div className="flex justify-start border gap-x-5 py-4">
+    <div className="flex justify-start border border-gray-300 gap-x-5 py-4">
       <div className="md:w-2/10 w-3/10">
         <img
           src="https://images-magento.shoppersstop.com/pub/media/catalog/product/S24GEWAFFLE2OLI/S24GEWAFFLE2OLI_GREEN/S24GEWAFFLE2OLI_GREEN.jpg_2000Wx3000H"

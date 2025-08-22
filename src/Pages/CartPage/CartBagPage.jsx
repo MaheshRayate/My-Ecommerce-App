@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import CartItem from "../../Components/CartBagPage/CartItem";
+import CartSummaryContainer from "../../Components/CartBagPage/CartSummaryContainer";
+import OtherProductsContainer from "../../Components/CartBagPage/OtherProductsContainer";
 
 const CartBagPage = () => {
   return (
-    <div className="py-20 h-400 ">
-      <div className="flex flex-col lg:flex-row">
-        <div className="lg:min-w-6/10 border">
+    <div className="py-20">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="lg:min-w-5/10 flex flex-col gap-y-3">
           <CartItem />
           <CartItem />
           <CartItem />
         </div>
-        <div className="h-40 lg:w-4/10 border"></div>
+        <div className="h-fit lg:w-4/10 border border-gray-300">
+          <CartSummaryContainer />
+        </div>
+      </div>
+
+      <div>
+        <OtherProductsContainer />
       </div>
     </div>
   );
