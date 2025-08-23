@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import CartSummaryContainer from "../../Components/CartBagPage/CartSummaryContainer";
-import CartAddressContainer from "./CartAddressContainer";
+import CartAddressContainer from "../../Components/CartBagPage/CartAddressContainer";
 
 const CartAddressPage = () => {
   const [addressContainerOpened, setAddressContainerOpened] = useState(false);
 
+  const [addressList, setAddressList] = useState([]);
+
+  const handleNewAddress = () => {
+    setAddressContainerOpened(true);
+    document.body.style.overflow = "hidden";
+  };
+
   return (
-    <div className="py-20 min-h-160">
+    <div
+      className={`py-20 ${addressContainerOpened ? "min-h-fit" : "min-h-160"}`}
+    >
       <div
         className={`${
           addressContainerOpened
@@ -24,9 +33,7 @@ const CartAddressPage = () => {
           <div className="py-2 pt-6">
             <button
               className="px-4 cursor-pointer py-1 block text-primary  mx-auto border-primary border"
-              onClick={() => {
-                setAddressContainerOpened(true);
-              }}
+              onClick={handleNewAddress}
             >
               Add New Address
             </button>
@@ -40,6 +47,7 @@ const CartAddressPage = () => {
       <CartAddressContainer
         addressContainerOpened={addressContainerOpened}
         setAddressContainerOpened={setAddressContainerOpened}
+        setAddressList={setAddressList}
       />
     </div>
   );
