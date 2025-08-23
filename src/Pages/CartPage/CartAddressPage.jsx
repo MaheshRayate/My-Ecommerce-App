@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CartSummaryContainer from "../../Components/CartBagPage/CartSummaryContainer";
 import CartAddressContainer from "../../Components/CartBagPage/CartAddressContainer";
+import AddressCard from "../../Components/CartBagPage/AddressCard";
+import { nanoid } from "nanoid";
 
 const CartAddressPage = () => {
   const [addressContainerOpened, setAddressContainerOpened] = useState(false);
@@ -24,12 +26,21 @@ const CartAddressPage = () => {
         } flex  flex-col lg:flex-row gap-10`}
       >
         <div className="border-gray-300 lg:min-w-7/10 border py-4  font-nata-sans">
-          <div className="py-2 border-b border-gray-300 px-4">
-            <h1 className="text-2xl">You have no saved addresses.</h1>
-            <h2 className="text-xl text-gray-500">
-              Please add an address to continue shopping!
-            </h2>
-          </div>
+          {addressList.length > 0 ? (
+            <div className="py-2 border-b border-gray-300 px-4">
+              {addressList.map((item) => {
+                return <AddressCard key={nanoid()} {...item} />;
+              })}
+            </div>
+          ) : (
+            <div className="py-2 border-b border-gray-300 px-4">
+              <h1 className="text-2xl">You have no saved addresses.</h1>
+              <h2 className="text-xl text-gray-500">
+                Please add an address to continue shopping!
+              </h2>
+            </div>
+          )}
+
           <div className="py-2 pt-6">
             <button
               className="px-4 cursor-pointer py-1 block text-primary  mx-auto border-primary border"
