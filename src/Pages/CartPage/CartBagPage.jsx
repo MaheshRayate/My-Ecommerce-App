@@ -13,7 +13,7 @@ const CartBagPage = () => {
           <CartItem />
         </div>
         <div className="h-fit lg:w-4/10">
-          <CartSummaryContainer />
+          <CartSummaryContainer link="address" />
         </div>
       </div>
 

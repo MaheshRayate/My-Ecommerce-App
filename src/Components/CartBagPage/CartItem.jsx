@@ -39,8 +39,8 @@ const CartItem = () => {
 
         <div className=" my-3 flex flex-col items-start gap-y-2 md:flex-row md:items-center lg:gap-x-4">
           <p className="font-nata-sans">White</p>
-          <div class="relative w-48">
-            <button class="font-nata-sans w-full border border-gray-200  px-3 py-2 rounded-md">
+          <div className="relative w-48">
+            <button className="font-nata-sans w-full border border-gray-200  px-3 py-2 rounded-md">
               Size:M{" "}
               {sizeDropDown ? (
                 <FaChevronUp
@@ -59,15 +59,17 @@ const CartItem = () => {
               )}
             </button>
             <ul
-              class={`${
+              className={`${
                 sizeDropDown ? "block" : "hidden"
               } absolute  bg-white shadow-md w-full mt-1 rounded-md`}
             >
-              <li class="font-nata-sans px-3 py-2 hover:bg-gray-100">S</li>
-              <li class="font-nata-sans px-3 py-2 hover:bg-gray-100">M</li>
-              <li class="font-nata-sans px-3 py-2 hover:bg-gray-100">L</li>
-              <li class="font-nata-sans px-3 py-2 hover:bg-gray-100">XL</li>
-              <li class="font-nata-sans px-3 py-2 hover:bg-gray-100">XXL</li>
+              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">S</li>
+              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">M</li>
+              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">L</li>
+              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">XL</li>
+              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">
+                XXL
+              </li>
             </ul>
           </div>
 
@@ -93,6 +95,10 @@ const CartItem = () => {
           <p className="font-nata-sans text-gray-600">₹2799</p>
           <p className="font-nata-sans text-primary">50% OFF</p>
         </div>
+
+        <button className="block text-l font-semibold font-nata-sans text-primary cursor-pointer border px-2 mt-3 rounded">
+          REMOVE
+        </button>
       </div>
     </div>
   );

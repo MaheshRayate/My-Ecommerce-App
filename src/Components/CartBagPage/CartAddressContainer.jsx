@@ -131,15 +131,17 @@ const CartAddressContainer = ({
             type="radio"
             name="addresstype"
             id=""
-            value="Default"
+            value="Home"
+            defaultValue={"Home"}
             onChange={handleFormInputsChange}
           />
-          Default
+          Home
           <input
             type="radio"
             name="addresstype"
             id=""
             value="Work"
+            defaultValue={"Home"}
             onChange={handleFormInputsChange}
           />
           Work
@@ -148,6 +150,7 @@ const CartAddressContainer = ({
             name="addresstype"
             id=""
             value="Office"
+            defaultValue={"Home"}
             onChange={handleFormInputsChange}
           />
           Office

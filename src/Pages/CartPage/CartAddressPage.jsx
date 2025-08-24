@@ -28,6 +28,9 @@ const CartAddressPage = () => {
         <div className="border-gray-300 lg:min-w-7/10 border py-4  font-nata-sans">
           {addressList.length > 0 ? (
             <div className="py-2 border-b border-gray-300 px-4">
+              <h1 className="text-xl font-semibold px-1">
+                Select delivery Address
+              </h1>
               {addressList.map((item) => {
                 return <AddressCard key={nanoid()} {...item} />;
               })}
@@ -51,7 +54,7 @@ const CartAddressPage = () => {
           </div>
         </div>
         <div className="lg:min-w-3/10">
-          <CartSummaryContainer />
+          <CartSummaryContainer link="payment" />
         </div>
       </div>
 

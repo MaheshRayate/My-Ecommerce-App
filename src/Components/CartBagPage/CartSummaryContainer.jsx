@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CartSummaryContainer = () => {
+const CartSummaryContainer = ({ link }) => {
   return (
     <div className="border-gray-300 border">
       <div className="border-b border-gray-300">
@@ -33,7 +33,7 @@ const CartSummaryContainer = () => {
           </div>
         </ul>
         <Link
-          to="/cart/address"
+          to={`/cart/${link}`}
           className="block bg-primary w-full py-2 text-center text-white text-2xl font-nata-sans cursor-pointer"
         >
           PLACE ORDER
