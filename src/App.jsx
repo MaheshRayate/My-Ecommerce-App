@@ -9,8 +9,13 @@ import {
   CartBagPage,
   CartAddressPage,
   CartPaymentPage,
+  UserProfilePage,
+  UserWelcomePage,
+  UserOrderPage,
+  UserWalletPage,
 } from "./Pages";
 import ProductDetailsPage from "./Pages/ProductDetailsPage.jsx/ProductDetailsPage";
+import UserProfilePageLayout from "./Layouts/UserProfilePageLayout";
 
 const router = createBrowserRouter([
   {
@@ -46,8 +51,20 @@ const router = createBrowserRouter([
           },
         ],
       },
+
+      {
+        path: "/account",
+        element: <UserProfilePageLayout />,
+        children: [
+          { index: true, element: <UserWelcomePage /> },
+          { path: "/account/profile", element: <UserProfilePage /> },
+          { path: "/account/orders", element: <UserOrderPage /> },
+          { path: "/account/wallet", element: <UserWalletPage /> },
+        ],
+      },
     ],
   },
+
   {
     path: "/about",
     element: <h2>About Page</h2>,

@@ -40,9 +40,9 @@ const Navbar = () => {
         <button className="lg:hidden cursor-pointer">
           <IoHeartOutline className=" text-3xl text-primary" />
         </button>
-        <button className="lg:hidden cursor-pointer" onClick={openSidebar}>
+        <Link to="/account" className="lg:hidden cursor-pointer">
           <IoPersonCircleOutline className="text-3xl text-blue-700" />
-        </button>
+        </Link>
         <button className="lg:hidden cursor-pointer" onClick={openSidebar}>
           <GiHamburgerMenu className="text-2xl text-blue-700" />
         </button>
@@ -69,9 +69,9 @@ const Navbar = () => {
           <button className="cursor-pointer">
             <IoHeartOutline className=" text-4xl text-primary" />
           </button>
-          <button className="cursor-pointer">
+          <Link to="/account" className="cursor-pointer">
             <IoPersonCircleOutline className=" text-4xl text-primary" />
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
