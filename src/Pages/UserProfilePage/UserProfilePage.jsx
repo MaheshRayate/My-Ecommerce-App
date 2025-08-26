@@ -1,5 +1,6 @@
 import React from "react";
 import { FaCircleUser } from "react-icons/fa6";
+import { FaCirclePlus } from "react-icons/fa6";
 import AddressCard from "../../Components/CartBagPage/AddressCard";
 
 const UserProfilePage = () => {
@@ -7,6 +8,7 @@ const UserProfilePage = () => {
     <div>
       <div className="px-10 border-b border-gray-300">
         <h1 className="text-2xl lg:text-3xl font-nata-sans">My Profile</h1>
+
         <div className="flex text-3xl gap-x-2 text-gray-600 mt-2">
           <FaCircleUser />
           <h1 className="text-xl lg:text-2xl font-nata-sans">Mahesh Rayate</h1>
@@ -47,9 +49,16 @@ const UserProfilePage = () => {
       </div>
 
       <div className="px-10 py-5">
-        <h1 className="text-2xl lg:text-3xl font-nata-sans mb-2">
-          My Addresses
-        </h1>
+        <div className="flex items-center justify-between text-primary">
+          <h1 className="text-2xl lg:text-3xl font-nata-sans mb-2">
+            My Addresses
+          </h1>
+          <button className="flex gap-x-2 items-center cursor-pointer">
+            {" "}
+            <FaCirclePlus />
+            Add Address
+          </button>
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-3">
           <div className="border relative border-gray-300 px-3 py-4 my-2">
             <span className="absolute right-2 text-primary font-semibold text-xl">
