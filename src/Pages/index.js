@@ -10,3 +10,4 @@ export { default as UserProfilePage } from "./UserProfilePage/UserProfilePage";
 export { default as UserOrderPage } from "./UserProfilePage/UserOrderPage";
 export { default as UserWelcomePage } from "./UserProfilePage/UserWelcomePage";
 export { default as UserWalletPage } from "./UserProfilePage/UserWalletPage";
+export { default as OrderDetailPage } from "./UserProfilePage/OrderDetailPage";

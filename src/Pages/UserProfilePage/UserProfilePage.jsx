@@ -49,11 +49,11 @@ const UserProfilePage = () => {
       </div>
 
       <div className="px-10 py-5">
-        <div className="flex items-center justify-between text-primary">
+        <div className="flex items-center justify-between ">
           <h1 className="text-2xl lg:text-3xl font-nata-sans mb-2">
             My Addresses
           </h1>
-          <button className="flex gap-x-2 items-center cursor-pointer">
+          <button className="flex gap-x-2 items-center cursor-pointer text-primary">
             {" "}
             <FaCirclePlus />
             Add Address

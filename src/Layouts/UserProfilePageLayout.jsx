@@ -1,38 +1,77 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 import { UserProfilePage } from "../Pages";
 
 const UserProfilePageLayout = () => {
+  const location = useLocation();
+  console.log(location);
+  const currentActivePage = location?.pathname?.split("/")?.[2];
+  console.log(currentActivePage);
   return (
     <section className="lg:px-10 px-3 mb-10 mt-10">
       <div className="flex flex-col lg:flex-row   gap-x-10 gap-y-2">
         <div className="flex gap-x-2 h-fit   justify-center lg:flex-col border border-gray-300 ">
           <div className="py-2 lg:border-b border-gray-300 lg:px-10">
-            <Link to="/account/profile" className="lg:text-xl">
+            <Link
+              to="/account/profile"
+              className={`${
+                currentActivePage === "profile"
+                  ? "text-primary font-semibold"
+                  : "text-black font-normal"
+              } lg:text-xl`}
+            >
               Profile
             </Link>
           </div>
           <div className="py-2 lg:border-b border-gray-300 lg:px-10">
-            <Link to="/account/orders" className="lg:text-xl">
+            <Link
+              to="/account/orders"
+              className={`${
+                currentActivePage === "orders"
+                  ? "text-primary font-semibold"
+                  : "text-black font-normal"
+              } lg:text-xl`}
+            >
               Orders
             </Link>
           </div>
 
           <div className="py-2 lg:border-b border-gray-300 lg:px-10">
-            <Link to="/account/wallet" className="lg:text-xl">
+            <Link
+              to="/account/wallet"
+              className={`${
+                currentActivePage === "wallet"
+                  ? "text-primary font-semibold"
+                  : "text-black font-normal"
+              } lg:text-xl`}
+            >
               Wallet
             </Link>
           </div>
 
           <div className="py-2 lg:border-b border-gray-300 lg:px-10">
-            <Link to="/" className="lg:text-xl">
+            <Link
+              to="/account/wishlist"
+              className={`${
+                currentActivePage === "wishlist"
+                  ? "text-primary font-semibold"
+                  : "text-black font-normal"
+              } lg:text-xl`}
+            >
               Wishlist
             </Link>
           </div>
 
           <div className="py-2 lg:border-b border-gray-300 lg:px-10">
-            <Link to="/" className="lg:text-xl">
+            <Link
+              to="/account/logout"
+              className={`${
+                currentActivePage === "logout"
+                  ? "text-primary font-semibold"
+                  : "text-black font-normal"
+              } lg:text-xl`}
+            >
               Logout
             </Link>
           </div>

@@ -13,6 +13,7 @@ import {
   UserWelcomePage,
   UserOrderPage,
   UserWalletPage,
+  OrderDetailPage,
 } from "./Pages";
 import ProductDetailsPage from "./Pages/ProductDetailsPage.jsx/ProductDetailsPage";
 import UserProfilePageLayout from "./Layouts/UserProfilePageLayout";
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
           { index: true, element: <UserWelcomePage /> },
           { path: "/account/profile", element: <UserProfilePage /> },
           { path: "/account/orders", element: <UserOrderPage /> },
+          { path: "/account/orders/:id", element: <OrderDetailPage /> },
           { path: "/account/wallet", element: <UserWalletPage /> },
         ],
       },
