@@ -7,7 +7,7 @@ import { IoCartSharp } from "react-icons/io5";
 import { IoHeartOutline } from "react-icons/io5";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const { setNavId, sidebarOpen, openSidebar } = useGlobalContext();
@@ -34,15 +34,31 @@ const Navbar = () => {
       </div>
 
       <div className="flex items-center gap-x-1">
-        <Link to="/cart/bag" className="lg:hidden cursor-pointer">
+        <NavLink
+          to="/cart/bag"
+          className={
+            ({ isActive }) =>
+              isActive
+                ? "lg:hidden border-b-3 border-primary font-bold cursor-pointer" // active styles
+                : "lg:hidden cursor-pointer" // inactive styles
+          }
+        >
           <IoCartSharp className="text-3xl text-primary" />
-        </Link>
+        </NavLink>
         <button className="lg:hidden cursor-pointer">
           <IoHeartOutline className=" text-3xl text-primary" />
         </button>
-        <Link to="/account" className="lg:hidden cursor-pointer">
+        <NavLink
+          to="/account"
+          className={
+            ({ isActive }) =>
+              isActive
+                ? "lg:hidden border-b-3 border-primary font-bold cursor-pointer" // active styles
+                : "lg:hidden cursor-pointer" // inactive styles
+          }
+        >
           <IoPersonCircleOutline className="text-3xl text-blue-700" />
-        </Link>
+        </NavLink>
         <button className="lg:hidden cursor-pointer" onClick={openSidebar}>
           <GiHamburgerMenu className="text-2xl text-blue-700" />
         </button>
@@ -63,15 +79,31 @@ const Navbar = () => {
           <span className="absolute right-39 top-2">
             <IoSearch className="text-primary font-bold text-xl" />
           </span>
-          <Link to="/cart/bag" className="cursor-pointer">
+          <NavLink
+            to="/cart/bag"
+            className={
+              ({ isActive }) =>
+                isActive
+                  ? "border-b-4 border-primary font-bold cursor-pointer" // active styles
+                  : " cursor-pointer" // inactive styles
+            }
+          >
             <IoCartSharp className=" text-4xl text-primary" />
-          </Link>
+          </NavLink>
           <button className="cursor-pointer">
             <IoHeartOutline className=" text-4xl text-primary" />
           </button>
-          <Link to="/account" className="cursor-pointer">
+          <NavLink
+            to="/account"
+            className={
+              ({ isActive }) =>
+                isActive
+                  ? "border-b-4 border-primary font-bold cursor-pointer" // active styles
+                  : " cursor-pointer" // inactive styles
+            }
+          >
             <IoPersonCircleOutline className=" text-4xl text-primary" />
-          </Link>
+          </NavLink>
         </div>
       </div>
     </nav>

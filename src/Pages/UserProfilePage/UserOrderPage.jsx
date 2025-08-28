@@ -9,11 +9,11 @@ const UserOrderPage = () => {
       </div>
 
       <div className="">
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
-        <OrderCard />
+        <OrderCard orderStatus={"Shipped"} />
+        <OrderCard orderStatus={"Out For Delivery"} />
+        <OrderCard orderStatus={"Delivered"} />
+        <OrderCard orderStatus={"Delivered"} />
+        <OrderCard orderStatus={"Delivered"} />
       </div>
     </div>
   );
