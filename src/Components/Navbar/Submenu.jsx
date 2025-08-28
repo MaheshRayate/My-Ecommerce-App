@@ -46,6 +46,7 @@ const Submenu = () => {
                   <Link
                     to={href}
                     className="block hover:px-2 hover:bg-blue-100 hover:rounded transition-all duration-500"
+                    onClick={() => setNavId(null)}
                   >
                     {name}
                   </Link>

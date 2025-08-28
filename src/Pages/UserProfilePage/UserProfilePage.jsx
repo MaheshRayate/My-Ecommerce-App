@@ -9,7 +9,7 @@ const UserProfilePage = () => {
       <div className="px-10 border-b border-gray-300">
         <h1 className="text-2xl lg:text-3xl font-nata-sans">My Profile</h1>
 
-        <div className="flex text-3xl gap-x-2 text-gray-600 mt-2">
+        <div className="flex text-3xl gap-x-2 text-gray-600 mt-5">
           <FaCircleUser />
           <h1 className="text-xl lg:text-2xl font-nata-sans">Mahesh Rayate</h1>
         </div>

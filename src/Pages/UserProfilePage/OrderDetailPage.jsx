@@ -2,6 +2,9 @@ import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import AddressCard from "../../Components/CartBagPage/AddressCard";
 
+import OrderHorizontalStepper from "../../Components/OrderDetailsPage/OrderHorizontalStepper";
+import OrderVerticalStepper from "../../Components/OrderDetailsPage/OrderVerticalStepper";
+
 const OrderDetailPage = () => {
   return (
     <section className="">
@@ -18,6 +21,16 @@ const OrderDetailPage = () => {
             Solid Blended Fabric Round Neck Men's T-Shirt
           </p>
           <p>Size : M</p>
+        </div>
+
+        <div>
+          <div className="lg:hidden">
+            <OrderVerticalStepper />
+          </div>
+
+          <div className="hidden lg:block">
+            <OrderHorizontalStepper />
+          </div>
         </div>
 
         <div className="px-2 lg:px-10 flex gap-x-4 py-2 items-center mx-2 lg:mx-10 bg-primary text-white">

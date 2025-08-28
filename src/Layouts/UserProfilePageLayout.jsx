@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 import { UserProfilePage } from "../Pages";
+import ScrollToTop from "../Components/ScrollToTop";
 
 const UserProfilePageLayout = () => {
   const location = useLocation();
@@ -10,6 +11,7 @@ const UserProfilePageLayout = () => {
   console.log(currentActivePage);
   return (
     <section className="lg:px-10 px-3 mb-10 mt-10">
+      <ScrollToTop />
       <div className="flex flex-col lg:flex-row   gap-x-10 gap-y-2">
         <div className="flex gap-x-2 h-fit   justify-center lg:flex-col border border-gray-300 ">
           <div className="py-2 lg:border-b border-gray-300 lg:px-10">
