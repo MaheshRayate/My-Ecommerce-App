@@ -1,6 +1,7 @@
 import { useGlobalContext } from "./Context/Context";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
+import { ToastContainer } from "react-toastify";
 import CartPageLayout from "./Layouts/CartPageLayout";
 import {
   HomePage,
@@ -14,9 +15,14 @@ import {
   UserOrderPage,
   UserWalletPage,
   OrderDetailPage,
+  NotLoggedIn,
+  LoginPage,
+  RegisterPage,
 } from "./Pages";
 import ProductDetailsPage from "./Pages/ProductDetailsPage.jsx/ProductDetailsPage";
 import UserProfilePageLayout from "./Layouts/UserProfilePageLayout";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +77,11 @@ const router = createBrowserRouter([
     path: "/about",
     element: <h2>About Page</h2>,
   },
+
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
   {
     path: "/contact",
     element: <h2>Contact Page</h2>,
@@ -83,6 +94,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <RouterProvider router={router} />
     </>
   );

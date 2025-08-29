@@ -6,6 +6,9 @@ const AppProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [navId, setNavId] = useState(null);
 
+  // Checking if user Logged In
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const openSidebar = () => {
     setSidebarOpen(true);
   };
@@ -23,6 +26,8 @@ const AppProvider = ({ children }) => {
         closeSidebar,
         navId,
         setNavId,
+        isLoggedIn,
+        setIsLoggedIn,
       }}
     >
       {children}

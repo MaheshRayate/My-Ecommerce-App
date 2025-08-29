@@ -8,6 +8,7 @@ import MobileSortBy from "./MobileSortBy";
 import { nanoid } from "nanoid";
 import PaginationContainer from "./PaginationContainer";
 import { useProducts } from "../../Custom Hooks/useProducts";
+import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 
 const Product = () => {
   // const [showBox, setShowBox] = useState(true);
@@ -31,7 +32,8 @@ const Product = () => {
         <div className=" min-w-full md:min-w-[75%]">
           <div className="w-full px-3 grid grid-cols-2 gap-x-1 gap-y-1 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-5">
             {isLoading ? (
-              <h1 className="text-3xl">Loading...</h1>
+              // <h1 className="text-3xl">Loading...</h1>
+              <LoaderSpinner />
             ) : (
               data?.data?.products.map((product) => {
                 const id = nanoid();

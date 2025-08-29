@@ -31,8 +31,8 @@ const Footer = () => {
         })}
       </div>
 
-      <div className="border-t border-gray-100 w-9/10 mx-auto flex flex-col items-center text-center py-3 justify-center">
-        <div className="flex w-2/10 justify-evenly">
+      <div className="border border-gray-100 w-9/10 mx-auto flex flex-col items-center py-3 ">
+        <div className="flex lg:w-2/10 justify-evenly">
           <a href="">
             <FaInstagram className="size-10 text-white" />
           </a>
@@ -45,7 +45,7 @@ const Footer = () => {
           </a>
         </div>
 
-        <div className="flex flex-col gap-y-1 md:flex-row text-white gap-x-2">
+        <div className="hidden lg:flex flex-col gap-y-1 md:flex-row text-white gap-x-2">
           <div>
             <div className="flex items-center gap-2">
               <MdCall className="size-10  border border-gray-100 p-2 rounded-full" />

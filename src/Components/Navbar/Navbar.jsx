@@ -21,7 +21,7 @@ const Navbar = () => {
   return (
     <nav
       onMouseOver={handleMouseOver}
-      className="fixed z-20 w-full bg-white border-b border-gray-100 shadow-lg flex justify-between  lg:gap-10 items-center px-4 lg:px-10"
+      className="fixed z-20 w-full bg-white border-b border-gray-100 shadow-lg flex justify-between  lg:gap-10 items-center px-4 lg:px-10 font-nata-sans"
     >
       <div className="flex items-center gap-10">
         <div>
@@ -57,10 +57,10 @@ const Navbar = () => {
                 : "lg:hidden cursor-pointer" // inactive styles
           }
         >
-          <IoPersonCircleOutline className="text-3xl text-blue-700" />
+          <IoPersonCircleOutline className="text-3xl text-primary" />
         </NavLink>
         <button className="lg:hidden cursor-pointer" onClick={openSidebar}>
-          <GiHamburgerMenu className="text-2xl text-blue-700" />
+          <GiHamburgerMenu className="text-2xl text-primary" />
         </button>
       </div>
 
