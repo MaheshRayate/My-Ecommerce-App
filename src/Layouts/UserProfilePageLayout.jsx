@@ -10,7 +10,7 @@ const UserProfilePageLayout = () => {
   console.log(location);
   const currentActivePage = location?.pathname?.split("/")?.[2];
   console.log(currentActivePage);
-  const name = true;
+
 
   const { user, isAuthenticated } = useAuthUser();
 

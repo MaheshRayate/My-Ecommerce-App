@@ -15,8 +15,10 @@ const useAuthUser = () => {
     data: user,
     isLoading,
     isError,
-  } = useQuery(["authUser"], fetchUser, {
-    retry: false, // don’t retry if unauthorized
+  } = useQuery({
+    queryKey: ["authUser"],
+    queryFn: fetchUser,
+    retry: false,
   });
 
   return {
