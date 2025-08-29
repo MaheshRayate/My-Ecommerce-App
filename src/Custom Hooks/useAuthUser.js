@@ -10,7 +10,7 @@ const fetchUser = async () => {
   return res.data.user;
 };
 
-export const useAuthUser = () => {
+const useAuthUser = () => {
   const {
     data: user,
     isLoading,
@@ -25,6 +25,6 @@ export const useAuthUser = () => {
     isError,
     isAuthenticated: !!user,
   };
-
-  
 };
+
+export default useAuthUser;
