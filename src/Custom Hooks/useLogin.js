@@ -16,9 +16,7 @@ const useLogin = () => {
     mutationFn: async (data) => {
       const res = await axios.post(
         "https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/users/login",
-
         data,
-
         { withCredentials: true }
       );
 
@@ -31,7 +29,9 @@ const useLogin = () => {
       toast.success(`${user.firstName} Logged  in successfully`);
       setIsLoggedIn(true);
 
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     },
     onError: (err) => {
       const message =

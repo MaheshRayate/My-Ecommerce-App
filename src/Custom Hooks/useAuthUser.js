@@ -4,10 +4,14 @@ import axios from "axios";
 const fetchUser = async () => {
   const res = await axios.get(
     "https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/users/profile",
-    { withCredentials: true }
+    {
+      withCredentials: true,
+    }
   );
 
-  return res.data.user;
+  console.log(res.data);
+
+  return res.data.data.user;
 };
 
 const useAuthUser = () => {
@@ -20,6 +24,8 @@ const useAuthUser = () => {
     queryFn: fetchUser,
     retry: false,
   });
+
+  console.log("HELLOs", user);
 
   return {
     user,

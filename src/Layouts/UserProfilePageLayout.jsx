@@ -11,8 +11,9 @@ const UserProfilePageLayout = () => {
   const currentActivePage = location?.pathname?.split("/")?.[2];
   console.log(currentActivePage);
 
-
   const { user, isAuthenticated } = useAuthUser();
+
+  console.log(user, isAuthenticated);
 
   return (
     <section className="lg:px-10 px-3 mb-10 mt-10">
