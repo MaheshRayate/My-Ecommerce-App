@@ -25,7 +25,7 @@ const LoginPage = () => {
     <div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="border border-gray-300 shadow-xl px-4 py-5 lg:w-4/10 lg:mx-auto mx-4 lg:my-30 my-10"
+        className="border border-gray-300 shadow-xl px-4 py-5 lg:w-4/10 lg:mx-auto mx-4 lg:my-30 my-30"
       >
         <img src={logo1} alt="" className="block mx-auto" />
         <h1 className="text-center text-3xl font-nata-sans font-semibold">
