@@ -4,11 +4,13 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useGlobalContext } from "../Context/Context";
 // import { setUser } from "../redux/slices/userSlice";
 
 const useLogin = () => {
   //   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { setIsLoggedIn } = useGlobalContext();
 
   return useMutation({
     mutationFn: async (data) => {
@@ -27,6 +29,8 @@ const useLogin = () => {
       //   dispatch(setUser(user));
       //   localStorage.setItem("user", JSON.stringify(user));
       toast.success(`${user.firstName} Logged  in successfully`);
+      setIsLoggedIn(true);
+
       navigate("/");
     },
     onError: (err) => {

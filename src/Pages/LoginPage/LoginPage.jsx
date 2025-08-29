@@ -4,6 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import useLogin from "../../Custom Hooks/useLogin";
+import { useGlobalContext } from "../../Context/Context";
 
 const LoginPage = () => {
   const {
@@ -13,10 +14,13 @@ const LoginPage = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+ 
+
   const loginMutation = useLogin();
 
   const onSubmit = async (data) => {
     loginMutation.mutate(data);
+
   };
 
   console.log(watch("example")); // watch input value by passing the name of it
