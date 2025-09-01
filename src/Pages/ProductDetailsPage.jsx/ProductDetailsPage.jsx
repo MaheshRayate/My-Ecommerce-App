@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { PiKeyReturn } from "react-icons/pi";
 import { BsFillCartFill } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
+const API_URL = import.meta.env.VITE_API_URL;
 
 import axios from "axios";
 import ProductReviewContainer from "../../Components/ProductDetailPage/ProductReviewContainer";
@@ -20,8 +21,7 @@ const ProductDetailsPage = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["productDetails", id],
 
-    queryFn: async () =>
-      axios.get(`http://localhost:3000/api/v1/products/${id}`),
+    queryFn: async () => axios.get(`${API_URL}/products/${id}`),
   });
 
   const handleSize = (size) => {
