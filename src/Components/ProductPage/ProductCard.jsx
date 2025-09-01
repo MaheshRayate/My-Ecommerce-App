@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const ProductCard = ({
   _id,
@@ -12,7 +13,7 @@ const ProductCard = ({
 }) => {
   return (
     <div className="border-gray-300 cursor-pointer lg:block">
-      <Link to={`/${_id}`}>
+      <Link to={`${API_URL}/${_id}`}>
         <img
           src={imageUrl}
           alt="t-shirt"
