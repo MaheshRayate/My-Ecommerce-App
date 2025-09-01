@@ -1,4 +1,5 @@
 import React from "react";
+import Reviewcard from "./Reviewcard";
 import { FaPencil } from "react-icons/fa6";
 
 const ProductReviewContainer = ({ reviews }) => {
@@ -7,10 +8,10 @@ const ProductReviewContainer = ({ reviews }) => {
       <h1 className="px-6 py-2 border-b border-gray-400 text-2xl font-nata-sans uppercase">
         Ratings and Reviews
       </h1>
-      {reviews ? (
+      {reviews.length > 0 ? (
         <div>
           {reviews.map((review) => {
-            <ReviewCard key={review.id} {...review} />;
+            return <Reviewcard key={review._id} {...review} />;
           })}
         </div>
       ) : (

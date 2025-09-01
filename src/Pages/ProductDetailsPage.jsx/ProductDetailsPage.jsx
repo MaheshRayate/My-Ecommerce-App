@@ -21,9 +21,7 @@ const ProductDetailsPage = () => {
     queryKey: ["productDetails", id],
 
     queryFn: async () =>
-      axios.get(
-        `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products/${id}`
-      ),
+      axios.get(`http://localhost:3000/api/v1/products/${id}`),
   });
 
   const handleSize = (size) => {
@@ -115,7 +113,9 @@ const ProductDetailsPage = () => {
             <ProductDetailsAccordion />
           </div>
 
-          <ProductReviewContainer />
+          <ProductReviewContainer
+            reviews={data?.data?.data?.product?.productReviews}
+          />
         </div>
       </div>
       <SimilarProductContainer

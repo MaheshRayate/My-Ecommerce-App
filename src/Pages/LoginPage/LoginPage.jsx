@@ -4,7 +4,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import { Link } from "react-router-dom";
 import useLogin from "../../Custom Hooks/useLogin";
-import { useGlobalContext } from "../../Context/Context";
 
 const LoginPage = () => {
   const {
@@ -14,16 +13,11 @@ const LoginPage = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
- 
-
   const loginMutation = useLogin();
 
   const onSubmit = async (data) => {
     loginMutation.mutate(data);
-
   };
-
-  console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <div>
@@ -75,19 +69,16 @@ const LoginPage = () => {
           )}
         </div>
 
-        <input
-          type="submit"
-          disabled={loginMutation.isLoading}
-          className={`${
-            isSubmitting ? "hidden" : "block"
-          } border mt-4 w-full text-primary border-primary font-nata-sans font-semibold`}
-        />
         <button
-          className={`${
-            loginMutation.isLoading ? "block" : "hidden"
-          } border my-4 py-1 w-full text-primary border-primary font-nata-sans font-semibold`}
+          type="submit"
+          disabled={loginMutation?.isPending}
+          className="border mt-4 w-full text-primary border-primary font-nata-sans font-semibold flex items-center justify-center"
         >
-          <CircularProgress size="30px" />
+          {loginMutation?.isPending ? (
+            <CircularProgress size="24px" />
+          ) : (
+            "Submit"
+          )}
         </button>
 
         <p className="text-center text-md font-nata-sans my-2">

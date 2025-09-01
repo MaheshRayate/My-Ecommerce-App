@@ -9,7 +9,7 @@ const OtherProductsContainer = () => {
     queryKey: ["otherProducts"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?topLavelCategory=Men&thirdLavelCategory=shirt&limit=20`
+        `http://localhost:3000/api/v1/products?topLavelCategory=Men&thirdLavelCategory=shirt&limit=20`
       );
 
       return res.data;

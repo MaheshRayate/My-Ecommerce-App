@@ -1,18 +1,22 @@
 import React, { useState } from "react";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
+import axios from "axios";
 import { IoMdClose } from "react-icons/io";
+import { toast } from "react-toastify";
 
 const CartAddressContainer = ({
   addressContainerOpened,
   setAddressContainerOpened,
-  setAddressList,
 }) => {
+  const queryClient = useQueryClient();
+
   const [address, setAddress] = useState({
-    name: "",
-    mobile: "",
-    pin: "",
+    fullName: "",
+    phone: "",
+    postalCode: "",
     city: "",
     address: "",
-    addresstype: "",
+    addressType: "",
   });
 
   const handleFormInputsChange = (e) => {
@@ -25,22 +29,37 @@ const CartAddressContainer = ({
     });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setAddressList((prevValue) => {
-      return [...prevValue, address];
-    });
-    setAddressContainerOpened(false);
-    document.body.style.overflow = "auto";
+  const addAddressMutation = useMutation({
+    mutationFn: (newAddress) =>
+      axios.post("http://localhost:3000/api/v1/addresses", newAddress, {
+        withCredentials: true,
+      }),
+    onSuccess: () => {
+      toast.success("Address Added Successfully");
 
-    setAddress({
-      name: "",
-      mobile: "",
-      pin: "",
-      city: "",
-      address: "",
-      addresstype: "",
-    });
+      // refresh authenticated user query
+      queryClient.invalidateQueries(["authUser"]);
+
+      // close modal & reset form
+      setAddressContainerOpened(false);
+      document.body.style.overflow = "auto";
+      setAddress({
+        fullName: "",
+        phone: "",
+        postalCode: "",
+        city: "",
+        address: "",
+        addressType: "",
+      });
+    },
+    onError: (err) => {
+      toast.error(err.response?.data?.message || err.message);
+    },
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    addAddressMutation.mutate(address); // trigger mutation
   };
 
   return (
@@ -56,6 +75,14 @@ const CartAddressContainer = ({
         className="cursor-pointer relative top-4"
         onClick={() => {
           setAddressContainerOpened(false);
+          setAddress({
+            fullName: "",
+            phone: "",
+            postalCode: "",
+            city: "",
+            address: "",
+            addressType: "",
+          });
           document.body.style.overflow = "auto";
         }}
       >
@@ -66,14 +93,14 @@ const CartAddressContainer = ({
       </h1>
       <form onSubmit={handleSubmit}>
         <div className="my-4">
-          {/* <label htmlFor="name">Name</label> */}
           <input
             type="text"
-            name="name"
-            id="name"
+            name="fullName"
+            id="fullName"
+            required
             className="border border-gray-300 rounded w-full font-nata-sans py-1 px-2"
-            placeholder="Name"
-            value={address.name}
+            placeholder="Full Name"
+            value={address.fullName}
             onChange={handleFormInputsChange}
           />
         </div>
@@ -81,32 +108,33 @@ const CartAddressContainer = ({
           {/* <label htmlFor="mobile">Mobile No.</label> */}
           <input
             type="text"
-            name="mobile"
-            id="mobile"
+            name="phone"
+            required
+            id="phone"
             className="border border-gray-300 rounded w-full font-nata-sans py-1 px-2"
             placeholder="Contact No."
-            value={address.mobile}
+            value={address.phone}
             onChange={handleFormInputsChange}
           />
         </div>
         <div className="my-4">
-          {/* <label htmlFor="pin">Pincode</label> */}
           <input
             type="text"
-            name="pin"
-            id="pin"
+            name="postalCode"
+            required
+            id="postalCode"
             className="border border-gray-300 rounded w-full font-nata-sans py-1 px-2"
             placeholder="Pin Code"
-            value={address.pin}
+            value={address.postalCode}
             onChange={handleFormInputsChange}
           />
         </div>
         <div className="my-4">
-          {/* <label htmlFor="city">City</label> */}
           <input
             type="text"
             name="city"
             id="city"
+            required
             className="border border-gray-300 rounded w-full font-nata-sans py-1 px-2"
             placeholder="City"
             value={address.city}
@@ -119,6 +147,7 @@ const CartAddressContainer = ({
             type="text"
             name="address"
             id="address"
+            required
             className="border border-gray-300 rounded w-full font-nata-sans py-1 px-2"
             placeholder="Address"
             value={address.address}
@@ -129,31 +158,29 @@ const CartAddressContainer = ({
         <div className="flex gap-x-4 border border-gray-300 rounded font-nata-sans py-1 px-2">
           <input
             type="radio"
-            name="addresstype"
+            name="addressType"
             id=""
             value="Home"
-            defaultValue={"Home"}
+            defaultChecked
             onChange={handleFormInputsChange}
           />
           Home
           <input
             type="radio"
-            name="addresstype"
+            name="addressType"
             id=""
             value="Work"
-            defaultValue={"Home"}
             onChange={handleFormInputsChange}
           />
           Work
           <input
             type="radio"
-            name="addresstype"
+            name="addressType"
             id=""
-            value="Office"
-            defaultValue={"Home"}
+            value="Other"
             onChange={handleFormInputsChange}
           />
-          Office
+          Other
         </div>
 
         <div className="my-5">

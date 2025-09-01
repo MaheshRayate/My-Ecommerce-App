@@ -3,11 +3,11 @@ import CartSummaryContainer from "../../Components/CartBagPage/CartSummaryContai
 import CartAddressContainer from "../../Components/CartBagPage/CartAddressContainer";
 import AddressCard from "../../Components/CartBagPage/AddressCard";
 import { nanoid } from "nanoid";
+import { useOutletContext } from "react-router-dom";
 
 const CartAddressPage = () => {
   const [addressContainerOpened, setAddressContainerOpened] = useState(false);
-
-  const [addressList, setAddressList] = useState([]);
+  const { user } = useOutletContext();
 
   const handleNewAddress = () => {
     setAddressContainerOpened(true);
@@ -26,12 +26,12 @@ const CartAddressPage = () => {
         } flex  flex-col lg:flex-row gap-10`}
       >
         <div className="border-gray-300 lg:min-w-7/10 border py-4  font-nata-sans">
-          {addressList.length > 0 ? (
+          {user?.addresses?.length > 0 ? (
             <div className="py-2 border-b border-gray-300 px-4">
               <h1 className="text-xl font-semibold px-1">
                 Select delivery Address
               </h1>
-              {addressList.map((item) => {
+              {user?.addresses?.map((item) => {
                 return <AddressCard key={nanoid()} {...item} />;
               })}
             </div>
@@ -61,7 +61,6 @@ const CartAddressPage = () => {
       <CartAddressContainer
         addressContainerOpened={addressContainerOpened}
         setAddressContainerOpened={setAddressContainerOpened}
-        setAddressList={setAddressList}
       />
     </div>
   );

@@ -32,13 +32,13 @@ const Submenu = () => {
       onMouseLeave={handleMouseLeave}
       className={` ${
         displayCategory ? `visible opacity-100` : `invisible opacity-0`
-      } hidden z-10 fixed left-1/2 font-nata-sans -translate-x-1/2  transition-all duration-500  bg-light-theme lg:grid grid-cols-3 px-10 py-15 border  w-9/10`}
+      } hidden z-10 fixed left-1/2 font-nata-sans -translate-x-1/2  transition-all duration-500  bg-white lg:grid grid-cols-3 px-10 py-15 border shadow-xl border-gray-200  w-9/10`}
     >
       {displayCategory?.sections?.map((section) => {
         const { id, name, items } = section;
         return (
           <div key={id}>
-            <h1 className="text-primary font-inter text-2xl">{name}</h1>
+            <h1 className="text-primary font-nata-sans text-2xl">{name}</h1>
             <div>
               {items?.map((item) => {
                 const { name, href } = item;

@@ -86,7 +86,7 @@ const UserProfilePageLayout = () => {
             </div>
           </div>
           <div className="border border-gray-300  py-3 lg:min-w-[80%]">
-            <Outlet />
+            <Outlet context={{ user }} />
           </div>
         </div>
       ) : (

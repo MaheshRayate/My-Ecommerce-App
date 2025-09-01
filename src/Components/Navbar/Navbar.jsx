@@ -70,8 +70,8 @@ const Navbar = () => {
             type="text"
             name=""
             id=""
-            placeholder="Search for products,brands and more"
-            className="border py-1 w-[21em] border-gray-500 rounded-xl px-2 bg-gray-100"
+            placeholder="Search for products, brands and more"
+            className="border py-1 w-[21em] border-gray-300  px-2"
           />
         </div>
 

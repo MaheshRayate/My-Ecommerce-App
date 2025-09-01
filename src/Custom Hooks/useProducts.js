@@ -33,8 +33,8 @@ const fetchProducts = async ({ queryKey }) => {
   );
 
   const url = params.toString()
-    ? `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
-    : `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`;
+    ? `http://localhost:3000/api/v1/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
+    : `http://localhost:3000/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`;
 
   const res = await axios.get(url);
   console.log(url);

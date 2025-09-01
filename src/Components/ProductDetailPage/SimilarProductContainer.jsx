@@ -9,7 +9,7 @@ const SimilarProductContainer = ({ topLavelCategory, thirdLavelCategory }) => {
     queryKey: ["similarproducts"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}&limit=8`
+        `http://localhost:3000/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}&limit=8`
       );
       return res.data;
     },
