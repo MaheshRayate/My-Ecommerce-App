@@ -2,6 +2,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useQueryClient } from "@tanstack/react-query";
+const API_URL = import.meta.env.VITE_API_URL;
 
 import { toast } from "react-toastify";
 
@@ -9,7 +10,7 @@ const useDeleteAddress = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (id) => {
-      await axios.delete(`http://localhost:3000/api/v1/addresses/${id}`, {
+      await axios.delete(`${API_URL}/addresses/${id}`, {
         withCredentials: true,
       });
     },

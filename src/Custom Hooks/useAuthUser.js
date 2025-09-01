@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const fetchUser = async () => {
-  const res = await axios.get("http://localhost:3000/api/v1/users/profile", {
+  const res = await axios.get(`${API_URL}/users/profile`, {
     withCredentials: true,
   });
 

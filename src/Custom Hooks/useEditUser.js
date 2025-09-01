@@ -2,16 +2,15 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useQueryClient } from "@tanstack/react-query";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const useEditUser = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data) => {
-      const res = await axios.patch(
-        "http://localhost:3000/api/v1/users",
-        data,
-        { withCredentials: true }
-      );
+      const res = await axios.patch(`${API_URL}}/users`, data, {
+        withCredentials: true,
+      });
 
       return res.data?.data?.user;
     },

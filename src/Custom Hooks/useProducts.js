@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const appendArrayParams = (params, key, values) => {
   if (Array.isArray(values) && values.length > 0) {
@@ -28,13 +29,13 @@ const fetchProducts = async ({ queryKey }) => {
   appendArrayParams(params, "discount", filters.discount);
   appendArrayParams(params, "fabric", filters.fabric);
 
-  console.log(
-    `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
-  );
+  // console.log(
+  //   `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
+  // );
 
   const url = params.toString()
-    ? `http://localhost:3000/api/v1/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
-    : `http://localhost:3000/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`;
+    ? `${API_URL}/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
+    : `${API_URL}/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`;
 
   const res = await axios.get(url);
   console.log(url);

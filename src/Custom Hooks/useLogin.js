@@ -1,4 +1,5 @@
-// hooks/useLogin.js
+const API_URL = import.meta.env.VITE_API_URL;
+
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -12,11 +13,9 @@ const useLogin = () => {
 
   return useMutation({
     mutationFn: async (data) => {
-      const res = await axios.post(
-        "http://localhost:3000/api/v1/users/login",
-        data,
-        { withCredentials: true }
-      );
+      const res = await axios.post(`${API_URL}/users/login`, data, {
+        withCredentials: true,
+      });
 
       return res.data?.data?.user;
     },
