@@ -32,7 +32,7 @@ const Product = () => {
         <div className=" min-w-full md:min-w-[75%]">
           <div className="w-full px-3 grid grid-cols-2 gap-x-1 gap-y-1 lg:grid-cols-4 lg:gap-x-4 lg:gap-y-5">
             {isLoading ? (
-              <div className="min-h-screen">
+              <div className="min-h-screen flex justify-center items-center">
                 <LoaderSpinner />
               </div>
             ) : (
