@@ -90,9 +90,17 @@ const Navbar = () => {
           >
             <IoCartSharp className=" text-4xl text-primary" />
           </NavLink>
-          <button className="cursor-pointer">
+          <NavLink
+            to="/wishlist"
+            className={
+              ({ isActive }) =>
+                isActive
+                  ? "border-b-4 border-primary font-bold cursor-pointer" // active styles
+                  : " cursor-pointer" // inactive styles
+            }
+          >
             <IoHeartOutline className=" text-4xl text-primary" />
-          </button>
+          </NavLink>
           <NavLink
             to="/account"
             className={

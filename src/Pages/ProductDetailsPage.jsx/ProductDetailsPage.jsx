@@ -3,7 +3,9 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { PiKeyReturn } from "react-icons/pi";
 import { BsFillCartFill } from "react-icons/bs";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
+
+import useAuthUser from "./../../Custom Hooks/useAuthUser";
 const API_URL = import.meta.env.VITE_API_URL;
 
 import axios from "axios";
@@ -11,9 +13,12 @@ import ProductReviewContainer from "../../Components/ProductDetailPage/ProductRe
 import ProductDetailsAccordion from "../../Components/ProductDetailPage/ProductDetailsAccordion";
 import SimilarProductContainer from "../../Components/ProductDetailPage/SimilarProductContainer";
 import LoaderSpinner from "../../Components/LoaderSpinner/LoaderSpinner";
+import useToggleWishList from "../../Custom Hooks/useToggleWishList";
 
 const ProductDetailsPage = () => {
   const [selectedSize, setSelectedSize] = useState(null);
+  const wishlistMutation = useToggleWishList();
+  const { user } = useAuthUser();
 
   const location = useLocation();
   const id = location.pathname.split("/")[1];
@@ -21,12 +26,17 @@ const ProductDetailsPage = () => {
 
   const { data, isLoading } = useQuery({
     queryKey: ["productDetails", id],
-
     queryFn: async () => axios.get(`${API_URL}/products/${id}`),
   });
 
+  const isWishlisted = user?.wishList?.includes(id);
+
   const handleSize = (size) => {
     setSelectedSize(size);
+  };
+
+  const handleWishList = (id) => {
+    wishlistMutation.mutate(id);
   };
 
   if (isLoading) {
@@ -103,9 +113,17 @@ const ProductDetailsPage = () => {
               <BsFillCartFill className="text-xl" />
               <span className="text-xl">Add to Bag</span>
             </button>
-            <button className=" text-primary border border-primary flex items-center gap-x-1 px-8 cursor-pointer py-1 rounded">
-              <FaRegHeart className="text-xl" />
-              <span className="text-xl">Wishlist</span>
+            <button
+              onClick={() => {
+                handleWishList(data?.data?.data?.product?._id);
+              }}
+              className=" text-primary border border-primary flex items-center gap-x-1 px-2 cursor-pointer py-1 rounded"
+            >
+              {isWishlisted ? (
+                <FaHeart className="text-xl" />
+              ) : (
+                <FaRegHeart className="text-xl" />
+              )}
             </button>
           </div>
 

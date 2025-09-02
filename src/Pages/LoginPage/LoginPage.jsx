@@ -72,7 +72,7 @@ const LoginPage = () => {
         <button
           type="submit"
           disabled={loginMutation?.isPending}
-          className="border mt-4 w-full text-primary border-primary font-nata-sans font-semibold flex items-center justify-center"
+          className="border py-1 mt-4 w-full text-primary border-primary font-nata-sans font-semibold flex items-center justify-center"
         >
           {loginMutation?.isPending ? (
             <CircularProgress size="24px" />

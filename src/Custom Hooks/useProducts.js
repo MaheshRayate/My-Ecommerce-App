@@ -29,9 +29,7 @@ const fetchProducts = async ({ queryKey }) => {
   appendArrayParams(params, "discount", filters.discount);
   appendArrayParams(params, "fabric", filters.fabric);
 
-  // console.log(
-  //   `https://my-ecommerce-app-backend-ttn6.onrender.com/api/v1/products?${params.toString()}topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`
-  // );
+  
 
   const url = params.toString()
     ? `${API_URL}/products?${params.toString()}&topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}`

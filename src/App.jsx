@@ -18,6 +18,7 @@ import {
   NotLoggedIn,
   LoginPage,
   RegisterPage,
+  WishListPage,
 } from "./Pages";
 import ProductDetailsPage from "./Pages/ProductDetailsPage.jsx/ProductDetailsPage";
 import UserProfilePageLayout from "./Layouts/UserProfilePageLayout";
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
       {
         path: "/:itemId",
         element: <ProductDetailsPage />,
+      },
+
+      {
+        path: "/wishlist",
+        element: <WishListPage />,
       },
       {
         path: "/cart",
