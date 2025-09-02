@@ -45,9 +45,17 @@ const Navbar = () => {
         >
           <IoCartSharp className="text-3xl text-primary" />
         </NavLink>
-        <button className="lg:hidden cursor-pointer">
+        <NavLink
+          to="/wishlist"
+          className={
+            ({ isActive }) =>
+              isActive
+                ? "lg:hidden border-b-3 border-primary font-bold cursor-pointer" // active styles
+                : "lg:hidden cursor-pointer" // inactive styles
+          }
+        >
           <IoHeartOutline className=" text-3xl text-primary" />
-        </button>
+        </NavLink>
         <NavLink
           to="/account"
           className={
