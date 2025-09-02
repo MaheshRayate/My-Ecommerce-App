@@ -10,6 +10,7 @@ import axios from "axios";
 import ProductReviewContainer from "../../Components/ProductDetailPage/ProductReviewContainer";
 import ProductDetailsAccordion from "../../Components/ProductDetailPage/ProductDetailsAccordion";
 import SimilarProductContainer from "../../Components/ProductDetailPage/SimilarProductContainer";
+import LoaderSpinner from "../../Components/LoaderSpinner/LoaderSpinner";
 
 const ProductDetailsPage = () => {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -30,8 +31,8 @@ const ProductDetailsPage = () => {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center">
-        <h1 className="text-3xl">Loading...</h1>
+      <div className="flex justify-center items-center h-full">
+        <LoaderSpinner />
       </div>
     );
   }
