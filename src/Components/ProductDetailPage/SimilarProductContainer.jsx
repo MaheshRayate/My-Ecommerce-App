@@ -3,13 +3,14 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { nanoid } from "nanoid";
 import ProductCard from "../ProductPage/ProductCard";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const SimilarProductContainer = ({ topLavelCategory, thirdLavelCategory }) => {
   const { data, isLoading } = useQuery({
     queryKey: ["similarproducts"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:3000/api/v1/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}&limit=8`
+        `${API_URL}/products?topLavelCategory=${topLavelCategory}&thirdLavelCategory=${thirdLavelCategory}&limit=8`
       );
       return res.data;
     },
