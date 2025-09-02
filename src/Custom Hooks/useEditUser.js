@@ -8,7 +8,7 @@ const useEditUser = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (data) => {
-      const res = await axios.patch(`${API_URL}}/users`, data, {
+      const res = await axios.patch(`${API_URL}}/users/updateMe`, data, {
         withCredentials: true,
       });
 
