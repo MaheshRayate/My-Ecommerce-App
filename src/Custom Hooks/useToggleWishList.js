@@ -18,7 +18,7 @@ const useToggleWishList = () => {
     },
 
     onSuccess: () => {
-      toast.success(`Item added to Wishlist`);
+      // toast.success(`Item added to Wishlist`);
       queryClient.invalidateQueries(["authUser"]);
     },
 
