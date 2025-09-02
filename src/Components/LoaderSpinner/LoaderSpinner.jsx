@@ -6,7 +6,7 @@ const LoaderSpinner = () => {
   return (
     <div className="flex items-center justify-center min-h-full">
       <Stack sx={{ color: "grey.500" }} spacing={2} direction="row">
-        <CircularProgress color="success" />
+        <CircularProgress />
       </Stack>
     </div>
   );
