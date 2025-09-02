@@ -3,6 +3,7 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { IoMdClose } from "react-icons/io";
 import { toast } from "react-toastify";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const CartAddressContainer = ({
   addressContainerOpened,
@@ -31,7 +32,7 @@ const CartAddressContainer = ({
 
   const addAddressMutation = useMutation({
     mutationFn: (newAddress) =>
-      axios.post("http://localhost:3000/api/v1/addresses", newAddress, {
+      axios.post(`${API_URL}/addresses`, newAddress, {
         withCredentials: true,
       }),
     onSuccess: () => {
