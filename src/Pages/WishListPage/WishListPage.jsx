@@ -3,6 +3,7 @@ import useGetWishList from "../../Custom Hooks/useGetWishList";
 import ProductCard from "./../../Components/ProductPage/ProductCard";
 import useAuthUser from "../../Custom Hooks/useAuthUser";
 import NotLoggedIn from "../NotLoggedInPage/NotLoggedIn";
+import WishListEmptyContainer from "../../Components/WishListPage/WishListEmptyContainer";
 
 const WishListPage = () => {
   const { wishListItems } = useGetWishList();
@@ -29,7 +30,7 @@ const WishListPage = () => {
             </div>
           ) : (
             <div>
-              <h1 className="text-3xl">Your Wishlist is Empty</h1>
+              <WishListEmptyContainer />
             </div>
           )}
         </div>

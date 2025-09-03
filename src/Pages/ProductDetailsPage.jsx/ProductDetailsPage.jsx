@@ -48,7 +48,7 @@ const ProductDetailsPage = () => {
   }
 
   return (
-    <div className="border lg:px-10 px-2">
+    <div className="lg:px-10 px-2">
       <div className="flex  flex-col md:flex-row my-5 md:gap-x-2 lg:gap-x-10">
         <div className="min-w-[40%]">
           <img
