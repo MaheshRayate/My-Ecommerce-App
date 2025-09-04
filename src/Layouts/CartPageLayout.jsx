@@ -9,17 +9,20 @@ import Typography from "@mui/material/Typography";
 import { Outlet, useLocation } from "react-router-dom";
 import useAuthUser from "../Custom Hooks/useAuthUser";
 import NotLoggedIn from "./../Pages/NotLoggedInPage/NotLoggedIn";
+import useGetCartSummary from "../Custom Hooks/useGetCartSummary";
 
 const CartPageLayout = () => {
   const steps = ["Bag", "Address", "Payment"];
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
   const { isAuthenticated, user } = useAuthUser();
+  const { cart } = useGetCartSummary();
 
   const location = useLocation();
 
   const currentPage = location.pathname.split("/")[2];
   console.log(currentPage);
+  console.log(cart);
 
   const currentPageStep = steps.findIndex(
     (step) => step.toLowerCase() === currentPage
@@ -90,7 +93,7 @@ const CartPageLayout = () => {
               <React.Fragment></React.Fragment>
             )}
           </Box>
-          <Outlet context={{ user }} />
+          <Outlet context={{ user, cart }} />
         </div>
       ) : (
         <NotLoggedIn />

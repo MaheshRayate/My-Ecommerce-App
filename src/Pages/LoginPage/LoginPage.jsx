@@ -29,7 +29,7 @@ const LoginPage = () => {
         <h1 className="text-center text-3xl font-nata-sans font-semibold">
           Welcome Back
         </h1>
-        {/* register your input into the hook by invoking the "register" function */}
+
         <div className="my-2">
           <label htmlFor="email" className=" font-nata-sans">
             Email
@@ -61,7 +61,7 @@ const LoginPage = () => {
               },
             })}
           />
-          {/* errors will return when field validation fails  */}
+
           {errors.password && (
             <span className="text-sm text-red-500">
               {errors.password.message}

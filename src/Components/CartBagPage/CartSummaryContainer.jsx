@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CartSummaryContainer = ({ link }) => {
+const CartSummaryContainer = ({ link, cart }) => {
   return (
     <div className="border-gray-300 border">
       <div className="border-b border-gray-300">
@@ -13,15 +13,15 @@ const CartSummaryContainer = ({ link }) => {
         <ul>
           <div className="flex justify-between px-4 my-2 py-2 font-nata-sans border-b border-gray-300">
             <p className="text-gray-600">Total MRP</p>
-            <p>₹4297</p>
+            <p>₹{cart?.totalPrice}</p>
           </div>
           <div className="flex justify-between px-4 my-2 py-2 font-nata-sans border-b border-gray-300">
             <p className="text-gray-600">Offer Discount</p>
-            <p>₹4297</p>
+            <p>₹{cart?.totalDiscountedPrice}</p>
           </div>
           <div className="flex justify-between px-4 my-2 py-2 font-nata-sans border-b border-gray-300">
             <p className="text-red-600">Your Total Savings</p>
-            <p className="text-red-600">₹4297</p>
+            <p className="text-red-600">₹{cart?.discount}</p>
           </div>
           <div className="flex justify-between px-4 my-2 py-2 font-nata-sans border-b border-gray-300">
             <p className="text-gray-600">Delivery Fee</p>
@@ -29,7 +29,7 @@ const CartSummaryContainer = ({ link }) => {
           </div>
           <div className="flex justify-between px-4 my-2 py-2 font-nata-sans text-xl">
             <p className="">Total Amount Payable</p>
-            <p className="font-semibold">₹2897</p>
+            <p className="font-semibold">₹{cart?.totalDiscountedPrice}</p>
           </div>
         </ul>
         <Link

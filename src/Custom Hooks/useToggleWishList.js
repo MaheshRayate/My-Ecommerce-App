@@ -10,15 +10,21 @@ const useToggleWishList = () => {
 
   return useMutation({
     mutationFn: async (id) => {
-      await axios.post(
+      const res = await axios.post(
         `${API_URL}/users/wishlist/${id}`,
         {}, // no body needed
         { withCredentials: true }
       );
+
+      return res.data;
     },
 
-    onSuccess: () => {
-      // toast.success(`Item added to Wishlist`);
+    onSuccess: (data) => {
+      if (data.action === "added") {
+        toast.success(data.message);
+      } else if (data.action === "removed") {
+        toast.info(data.message);
+      }
       queryClient.invalidateQueries(["authUser"]);
     },
 

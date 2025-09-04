@@ -14,15 +14,16 @@ import ProductDetailsAccordion from "../../Components/ProductDetailPage/ProductD
 import SimilarProductContainer from "../../Components/ProductDetailPage/SimilarProductContainer";
 import LoaderSpinner from "../../Components/LoaderSpinner/LoaderSpinner";
 import useToggleWishList from "../../Custom Hooks/useToggleWishList";
+import useAddToCart from "../../Custom Hooks/useAddToCart";
 
 const ProductDetailsPage = () => {
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("M");
   const wishlistMutation = useToggleWishList();
   const { user } = useAuthUser();
+  const addToCartMutation = useAddToCart();
 
   const location = useLocation();
   const id = location.pathname.split("/")[1];
-  // const { id } = useParams();
 
   const { data, isLoading } = useQuery({
     queryKey: ["productDetails", id],
@@ -37,6 +38,10 @@ const ProductDetailsPage = () => {
 
   const handleWishList = (id) => {
     wishlistMutation.mutate(id);
+  };
+
+  const handleAddToCart = () => {
+    addToCartMutation.mutate({ product: id, quantity: 1, size: selectedSize });
   };
 
   if (isLoading) {
@@ -88,14 +93,22 @@ const ProductDetailsPage = () => {
             <div className="flex gap-x-2">
               {["S", "M", "L", "XL", "XXL"].map((size) => {
                 return (
-                  <button
-                    onClick={() => handleSize(size)}
-                    className={`${
-                      selectedSize === size ? "bg-gray-400" : "bg-gray-200"
-                    } bg-gray-200 size-10 cursor-pointer font-inter rounded-full`}
-                  >
-                    {size}
-                  </button>
+                  <div>
+                    {/* <input
+                      type="radio"
+                      name="size"
+                      id=""
+                      className="w-full sr-only"
+                    /> */}
+                    <button
+                      onClick={() => handleSize(size)}
+                      className={`${
+                        selectedSize === size ? "bg-gray-400" : "bg-gray-200"
+                      } bg-gray-200 size-10 cursor-pointer font-inter rounded-full`}
+                    >
+                      {size}
+                    </button>
+                  </div>
                 );
               })}
             </div>
@@ -109,7 +122,10 @@ const ProductDetailsPage = () => {
           </div>
 
           <div className="flex gap-x-4 mt-4">
-            <button className="bg-primary text-white flex gap-x-1 items-center px-8 cursor-pointer py-1 rounded">
+            <button
+              onClick={handleAddToCart}
+              className="bg-primary text-white flex gap-x-1 items-center px-8 cursor-pointer py-1 rounded"
+            >
               <BsFillCartFill className="text-xl" />
               <span className="text-xl">Add to Bag</span>
             </button>

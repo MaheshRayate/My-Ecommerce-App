@@ -29,6 +29,7 @@ const useLogin = () => {
       }, 2000);
     },
     onError: (err) => {
+      console.log(err.response?.data?.message);
       const message =
         err.response?.data?.message ||
         "We encountered an issue while logging in! Try Again!";

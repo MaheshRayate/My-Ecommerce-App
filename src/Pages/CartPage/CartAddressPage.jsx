@@ -7,7 +7,7 @@ import { useOutletContext } from "react-router-dom";
 
 const CartAddressPage = () => {
   const [addressContainerOpened, setAddressContainerOpened] = useState(false);
-  const { user } = useOutletContext();
+  const { user, cart } = useOutletContext();
 
   const handleNewAddress = () => {
     setAddressContainerOpened(true);
@@ -54,7 +54,7 @@ const CartAddressPage = () => {
           </div>
         </div>
         <div className="lg:min-w-3/10">
-          <CartSummaryContainer link="payment" />
+          <CartSummaryContainer link="payment" cart={cart} />
         </div>
       </div>
 
