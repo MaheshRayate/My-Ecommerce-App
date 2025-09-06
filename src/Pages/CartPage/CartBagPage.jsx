@@ -1,11 +1,13 @@
 import CartItem from "../../Components/CartBagPage/CartItem";
 import CartSummaryContainer from "../../Components/CartBagPage/CartSummaryContainer";
 import OtherProductsContainer from "../../Components/CartBagPage/OtherProductsContainer";
+import useDeleteCartItem from "../../Custom Hooks/useDeleteCartItem";
 import useGetCartItems from "./../../Custom Hooks/useGetCartItems";
 import { useOutletContext } from "react-router-dom";
 
 const CartBagPage = () => {
   const { cartItems, isError, isLoading } = useGetCartItems();
+  
   const { cart } = useOutletContext();
 
   return (
@@ -17,6 +19,7 @@ const CartBagPage = () => {
               return (
                 <CartItem
                   key={cartItem._id}
+                  id={cartItem._id}
                   title={cartItem.product.title}
                   imageUrl={cartItem.product.imageUrl}
                   brand={cartItem.product.brand}
@@ -27,9 +30,6 @@ const CartBagPage = () => {
                 />
               );
             })}
-            {/* <CartItem />
-            <CartItem />
-            <CartItem /> */}
           </div>
           <div className="h-fit lg:w-4/10">
             <CartSummaryContainer link="address" cart={cart} />

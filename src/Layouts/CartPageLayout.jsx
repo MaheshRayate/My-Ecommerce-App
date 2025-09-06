@@ -10,6 +10,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import useAuthUser from "../Custom Hooks/useAuthUser";
 import NotLoggedIn from "./../Pages/NotLoggedInPage/NotLoggedIn";
 import useGetCartSummary from "../Custom Hooks/useGetCartSummary";
+import CartEmptyContainer from "../Components/CartBagPage/CartEmptyContainer";
 
 const CartPageLayout = () => {
   const steps = ["Bag", "Address", "Payment"];
@@ -63,37 +64,45 @@ const CartPageLayout = () => {
     <section className="px-2 lg:px-20 mt-5">
       {isAuthenticated ? (
         <div>
-          <Box sx={{ width: "100%" }}>
-            <Stepper activeStep={currentPageStep}>
-              {steps.map((label, index) => {
-                const stepProps = {};
-                const labelProps = {};
-                if (isStepOptional(index)) {
-                  labelProps.optional = (
-                    <Typography variant="caption">Optional</Typography>
-                  );
-                }
-                if (isStepSkipped(index)) {
-                  stepProps.completed = false;
-                }
-                return (
-                  <Step key={label} {...stepProps}>
-                    <StepLabel {...labelProps}>{label}</StepLabel>
-                  </Step>
-                );
-              })}
-            </Stepper>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography sx={{ mt: 2, mb: 1 }}>
-                  All steps completed - you&apos;re finished
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment></React.Fragment>
-            )}
-          </Box>
-          <Outlet context={{ user, cart }} />
+          {cart?.cartItems?.length > 0 ? (
+            <div>
+              <Box sx={{ width: "100%" }}>
+                <Stepper activeStep={currentPageStep}>
+                  {steps.map((label, index) => {
+                    const stepProps = {};
+                    const labelProps = {};
+                    if (isStepOptional(index)) {
+                      labelProps.optional = (
+                        <Typography variant="caption">Optional</Typography>
+                      );
+                    }
+                    if (isStepSkipped(index)) {
+                      stepProps.completed = false;
+                    }
+                    return (
+                      <Step key={label} {...stepProps}>
+                        <StepLabel {...labelProps}>{label}</StepLabel>
+                      </Step>
+                    );
+                  })}
+                </Stepper>
+                {activeStep === steps.length ? (
+                  <React.Fragment>
+                    <Typography sx={{ mt: 2, mb: 1 }}>
+                      All steps completed - you&apos;re finished
+                    </Typography>
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment></React.Fragment>
+                )}
+              </Box>
+              <Outlet context={{ user, cart }} />
+            </div>
+          ) : (
+            <div>
+              <CartEmptyContainer />
+            </div>
+          )}
         </div>
       ) : (
         <NotLoggedIn />

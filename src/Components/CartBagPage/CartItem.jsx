@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { CiCirclePlus, CiCircleMinus } from "react-icons/ci";
+import useDeleteCartItem from "../../Custom Hooks/useDeleteCartItem";
+import useUpdateCartItem from "../../Custom Hooks/useUpdateCartItem";
 
 const CartItem = ({
+  id,
   title,
   brand,
   imageUrl,
@@ -12,19 +15,47 @@ const CartItem = ({
   quantity,
 }) => {
   const [sizeDropDown, setSizeDropDown] = useState(false);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(quantity);
+  const deleteCartItemMutation = useDeleteCartItem();
+  const updateCartItemMutation = useUpdateCartItem();
 
-  const [selectedSized, setSelectedSize] = useState("M");
+  const [selectedSize, setSelectedSize] = useState(size);
 
   const handleIncrease = () => {
-    setCount(count + 1);
+    const newCount = count + 1;
+    setCount(newCount);
+
+    updateCartItemMutation.mutate({
+      id,
+      data: { size: selectedSize, quantity: newCount },
+    });
   };
 
   const handleDecrease = () => {
-    if (count === 0) {
-      return setCount(0);
-    }
-    setCount(count - 1);
+    if (count === 1) return;
+
+    const newCount = count - 1;
+    setCount(newCount);
+
+    updateCartItemMutation.mutate({
+      id,
+      data: { size: selectedSize, quantity: newCount },
+    });
+  };
+
+  const handleRemove = (id) => {
+    deleteCartItemMutation.mutate(id);
+  };
+
+  const handleClick = (e) => {
+    const newSize = e.target.value;
+    console.log(newSize);
+    setSelectedSize(newSize);
+    updateCartItemMutation.mutate({
+      id,
+      data: { size: newSize, quantity: count },
+    });
+    setSizeDropDown(false);
   };
 
   return (
@@ -47,7 +78,7 @@ const CartItem = ({
           {/* <p className="font-nata-sans">White</p> */}
           <div className="relative w-48">
             <button className="font-nata-sans w-full border border-gray-200  px-3 py-2 rounded-md">
-              Size:{size}{" "}
+              Size : {selectedSize}{" "}
               {sizeDropDown ? (
                 <FaChevronUp
                   className="absolute left-34 top-3 text-gray-600 cursor-pointer"
@@ -67,26 +98,86 @@ const CartItem = ({
             <ul
               className={`${
                 sizeDropDown ? "block" : "hidden"
-              } absolute  bg-white shadow-md w-full mt-1 rounded-md`}
+              } absolute  bg-white shadow-md flex flex-col gap-y-3 w-full mt-1 rounded-md`}
             >
-              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">S</li>
-              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">M</li>
-              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">L</li>
-              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">XL</li>
-              <li className="font-nata-sans px-3 py-2 hover:bg-gray-100">
-                XXL
-              </li>
+              <div className="flex py-1 relative items-center hover:bg-gray-100 cursor-pointer">
+                <input
+                  type="radio"
+                  name="size"
+                  id=""
+                  value="S"
+                  className="w-full not-sr-only opacity-0"
+                  onClick={handleClick}
+                />
+                <li className="font-nata-sans px-3 py-2 block absolute left-0">
+                  S
+                </li>
+              </div>
+              <div className="flex py-1 items-center relative hover:bg-gray-100 cursor-pointer">
+                <input
+                  type="radio"
+                  name="size"
+                  id=""
+                  value="M"
+                  className="w-full not-sr-only opacity-0"
+                  onClick={handleClick}
+                />
+                <li className="font-nata-sans px-3 py-2 block absolute left-0">
+                  M
+                </li>
+              </div>
+
+              <div className="flex py-1 relative items-center hover:bg-gray-100 cursor-pointer">
+                <input
+                  type="radio"
+                  name="size"
+                  id=""
+                  value="L"
+                  className="w-full not-sr-only opacity-0"
+                  onClick={handleClick}
+                />
+                <li className="font-nata-sans px-3 py-2 absolute left-0">L</li>
+              </div>
+
+              <div className="flex py-1 items-center relative hover:bg-gray-100 cursor-pointer">
+                <input
+                  type="radio"
+                  className="w-full not-sr-only opacity-0"
+                  onClick={handleClick}
+                  name="size"
+                  id=""
+                  value="XL"
+                />
+                <li className="font-nata-sans px-3 py-2 block absolute left-0">
+                  XL
+                </li>
+              </div>
+              <div className="flex py-1 items-center relative hover:bg-gray-100 cursor-pointer">
+                <input
+                  type="radio"
+                  name="size"
+                  id=""
+                  value="XXL"
+                  className="w-full not-sr-only opacity-0"
+                  onClick={handleClick}
+                />
+                <li className="font-nata-sans px-3 py-2 block absolute left-0">
+                  XXL
+                </li>
+              </div>
             </ul>
           </div>
 
           <div className="flex  gap-x-3 items-center">
             <button
-              className="text-3xl text-gray-600 cursor-pointer"
+              className={`${
+                count <= 1 ? "opacity-30" : "opacity-100"
+              } text-3xl text-gray-600 cursor-pointer`}
               onClick={handleDecrease}
             >
               <CiCircleMinus />
             </button>
-            <p className="font-nata-sans">{quantity}</p>
+            <p className="font-nata-sans">{count}</p>
             <button
               className=" text-3xl  text-gray-600 cursor-pointer"
               onClick={handleIncrease}
@@ -98,11 +189,16 @@ const CartItem = ({
 
         <div className="flex gap-x-2">
           <p className="font-nata-sans">₹{discountedPrice}</p>
-          <p className="font-nata-sans text-gray-600">₹{price}</p>
+          <p className="font-nata-sans text-gray-600 line-through">₹{price}</p>
           <p className="font-nata-sans text-primary">50% OFF</p>
         </div>
 
-        <button className="block text-l font-semibold font-nata-sans text-primary cursor-pointer border px-2 mt-3 rounded">
+        <button
+          onClick={() => {
+            handleRemove(id);
+          }}
+          className="block text-l hover:bg-primary hover:text-white font-semibold font-nata-sans text-primary cursor-pointer border px-2 mt-3 rounded"
+        >
           REMOVE
         </button>
       </div>
