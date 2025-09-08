@@ -22,8 +22,8 @@ const CartPageLayout = () => {
   const location = useLocation();
 
   const currentPage = location.pathname.split("/")[2];
-  console.log(currentPage);
-  console.log(cart);
+  // console.log(currentPage);
+  // console.log(cart);
 
   const currentPageStep = steps.findIndex(
     (step) => step.toLowerCase() === currentPage

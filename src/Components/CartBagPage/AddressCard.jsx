@@ -1,6 +1,14 @@
 import React from "react";
 
-const AddressCard = ({ fullName, city, address, addressType, phone, pin }) => {
+const AddressCard = ({
+  _id,
+  fullName,
+  address,
+  addressType,
+  phone,
+  selectedAddressId,
+  setSelectedAddressId,
+}) => {
   return (
     <div className="flex items-center gap-x-2">
       <input
@@ -8,6 +16,9 @@ const AddressCard = ({ fullName, city, address, addressType, phone, pin }) => {
         className="size-4"
         name="delivery-address"
         id="delivery-address"
+        value={_id}
+        checked={selectedAddressId === _id}
+        onChange={() => setSelectedAddressId(_id)}
       />
       <div className="border relative border-gray-300 px-3 py-1 my-2 w-full">
         <span className="absolute right-2 text-primary font-semibold text-xl">

@@ -8,6 +8,7 @@ import { useOutletContext } from "react-router-dom";
 const CartAddressPage = () => {
   const [addressContainerOpened, setAddressContainerOpened] = useState(false);
   const { user, cart } = useOutletContext();
+  const [selectedAddressId, setSelectedAddressId] = useState(null);
 
   const handleNewAddress = () => {
     setAddressContainerOpened(true);
@@ -32,7 +33,14 @@ const CartAddressPage = () => {
                 Select delivery Address
               </h1>
               {user?.addresses?.map((item) => {
-                return <AddressCard key={nanoid()} {...item} />;
+                return (
+                  <AddressCard
+                    key={nanoid()}
+                    {...item}
+                    selectedAddressId={selectedAddressId}
+                    setSelectedAddressId={setSelectedAddressId}
+                  />
+                );
               })}
             </div>
           ) : (
@@ -54,7 +62,12 @@ const CartAddressPage = () => {
           </div>
         </div>
         <div className="lg:min-w-3/10">
-          <CartSummaryContainer link="payment" cart={cart} />
+          <CartSummaryContainer
+            link="payment"
+            cart={cart}
+            disabled={!selectedAddressId}
+            selectedAddressId={selectedAddressId}
+          />
         </div>
       </div>
 

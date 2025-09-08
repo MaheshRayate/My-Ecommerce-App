@@ -7,7 +7,7 @@ const fetchCartItems = async () => {
     withCredentials: true,
   });
 
-  console.log(res.data.data.cartItems);
+  // console.log(res.data.data.cartItems);
 
   return res.data.data.cartItems;
 };

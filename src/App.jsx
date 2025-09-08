@@ -59,7 +59,7 @@ const router = createBrowserRouter([
             element: <CartAddressPage />,
           },
           {
-            path: "/cart/payment",
+            path: "/cart/payment/paymentSuccess",
             element: <CartPaymentPage />,
           },
         ],

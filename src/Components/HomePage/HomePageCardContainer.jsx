@@ -1,8 +1,21 @@
 import React from "react";
 import Slider from "react-slick";
 import HomePageCard from "./HomePageCard";
+import { nanoid } from "nanoid";
+import ProductCard from "../ProductPage/ProductCard";
+import useFetchHomePageProducts from "../../Custom Hooks/useFetchHomePageProducts";
 
-const HomePageCardContainer = () => {
+const HomePageCardContainer = ({
+  categoryTitle,
+  topLavelCategory,
+  thirdLavelCategory,
+}) => {
+  const { data, isLoadingmisError } = useFetchHomePageProducts(
+    topLavelCategory,
+    thirdLavelCategory
+  );
+
+  console.log(data);
   const settings = {
     dots: true,
     infinite: false,
@@ -41,12 +54,13 @@ const HomePageCardContainer = () => {
   };
   return (
     <div className="mx-auto w-[90%] my-10">
-      <h2 className="px-2 text-2xl font-inter  font-bold">Men Shirts</h2>
+      <h2 className="px-2 text-2xl font-inter  font-bold">{categoryTitle}</h2>
       <div className="slider-container mt-2">
         <Slider className=" home-card-container" {...settings}>
-          {Array.from({ length: 9 }).map((_, i) => (
-            <HomePageCard key={i} />
-          ))}
+          {data?.data?.products.map((product) => {
+            const id = nanoid();
+            return <ProductCard key={id} {...product} />;
+          })}
         </Slider>
       </div>
     </div>

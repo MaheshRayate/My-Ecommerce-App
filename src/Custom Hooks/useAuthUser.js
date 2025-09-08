@@ -3,13 +3,20 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const fetchUser = async () => {
-  const res = await axios.get(`${API_URL}/users/profile`, {
-    withCredentials: true,
-  });
+  try {
+    const res = await axios.get(`${API_URL}/users/profile`, {
+      withCredentials: true,
+    });
 
-  console.log(res.data);
+    console.log(res.data);
 
-  return res.data.data.user;
+    return res.data.data.user;
+  } catch (err) {
+    if (err.response?.status === 401) {
+      return null; // not logged in
+    }
+    throw err; // rethrow other errors
+  }
 };
 
 const useAuthUser = () => {
@@ -21,6 +28,7 @@ const useAuthUser = () => {
     queryKey: ["authUser"],
     queryFn: fetchUser,
     retry: false,
+    refetchOnWindowFocus: true,
   });
 
   console.log("HELLOs", user);

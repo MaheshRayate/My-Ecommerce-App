@@ -1,13 +1,13 @@
 import CartItem from "../../Components/CartBagPage/CartItem";
 import CartSummaryContainer from "../../Components/CartBagPage/CartSummaryContainer";
 import OtherProductsContainer from "../../Components/CartBagPage/OtherProductsContainer";
-import useDeleteCartItem from "../../Custom Hooks/useDeleteCartItem";
+
 import useGetCartItems from "./../../Custom Hooks/useGetCartItems";
 import { useOutletContext } from "react-router-dom";
 
 const CartBagPage = () => {
-  const { cartItems, isError, isLoading } = useGetCartItems();
-  
+  const { cartItems } = useGetCartItems();
+
   const { cart } = useOutletContext();
 
   return (
