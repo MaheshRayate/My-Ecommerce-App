@@ -51,15 +51,16 @@ const router = createBrowserRouter([
         element: <CartPageLayout />,
         children: [
           {
-            path: "/cart/bag",
+            path: "bag",
             element: <CartBagPage />,
           },
           {
-            path: "/cart/address",
+            // /cart/address
+            path: "address",
             element: <CartAddressPage />,
           },
           {
-            path: "/cart/payment/paymentSuccess",
+            path: "payment/paymentSuccess",
             element: <CartPaymentPage />,
           },
         ],
