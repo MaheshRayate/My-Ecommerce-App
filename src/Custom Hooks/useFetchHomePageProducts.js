@@ -3,7 +3,7 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
 const fetchProducts = async ({ topLavelCategory, thirdLavelCategory }) => {
-  const res = await axios.get(`${API_URL}/products`, {
+  const res = await axios.get(`${API_URL}/products?limit=24`, {
     params: {
       topLavelCategory,
       thirdLavelCategory,

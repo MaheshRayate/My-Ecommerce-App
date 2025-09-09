@@ -1,8 +1,13 @@
 import React from "react";
 import OrderCard from "../../Components/UserOrderPage/OrderCard";
 import { useOutletContext } from "react-router-dom";
+import useFetchOrderDetails from "../../Custom Hooks/useFetchOrderDetails";
 
 const UserOrderPage = () => {
+  const { data } = useFetchOrderDetails();
+  console.log(data?.data?.orders);
+  // const orders = data?.data?.orders;
+
   return (
     <div>
       <div className="px-10">
@@ -10,11 +15,22 @@ const UserOrderPage = () => {
       </div>
 
       <div className="">
-        <OrderCard orderStatus={"Shipped"} />
-        <OrderCard orderStatus={"Out For Delivery"} />
+        {data?.data?.orders.map((order) => {
+          return order.orderItems.map((orderItem) => {
+            return (
+              <OrderCard
+                key={orderItem._id}
+                {...orderItem}
+                orderStatus={order.orderStatus}
+              />
+            );
+          });
+        })}
+
+        {/* <OrderCard orderStatus={"Out For Delivery"} />
         <OrderCard orderStatus={"Delivered"} />
         <OrderCard orderStatus={"Delivered"} />
-        <OrderCard orderStatus={"Delivered"} />
+        <OrderCard orderStatus={"Delivered"} /> */}
       </div>
     </div>
   );

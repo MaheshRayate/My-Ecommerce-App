@@ -8,14 +8,22 @@ import Typography from "@mui/material/Typography";
 
 const steps = [
   "Placed",
-  "Order Confirmed",
+  "Confirmed",
   "Shipped",
   "Out For Delivery",
   "Delivered",
 ];
 
-export default function OrderHorizontalStepper() {
-  const [activeStep, setActiveStep] = React.useState(0);
+export default function OrderHorizontalStepper({ orderStatus }) {
+  console.log(orderStatus);
+
+  const itemOrderStatus = steps.findIndex((el) => {
+    return el === orderStatus;
+  });
+
+  console.log(itemOrderStatus);
+
+  const [activeStep, setActiveStep] = React.useState(itemOrderStatus + 1);
   const [skipped, setSkipped] = React.useState(new Set());
 
   const isStepOptional = (step) => {

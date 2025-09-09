@@ -1,42 +1,57 @@
 import React from "react";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import AddressCard from "../../Components/CartBagPage/AddressCard";
+import { useParams } from "react-router-dom";
+import useFetchOrderItemDetails from "../../Custom Hooks/useFetchOrderItemDetails";
 
 import OrderHorizontalStepper from "../../Components/OrderDetailsPage/OrderHorizontalStepper";
 import OrderVerticalStepper from "../../Components/OrderDetailsPage/OrderVerticalStepper";
 
 const OrderDetailPage = () => {
+  const params = useParams();
+  console.log(params.id);
+
+  const { data } = useFetchOrderItemDetails(params.id);
+  console.log(data?.data?.order);
+  console.log(data?.data?.orderItem);
+
   return (
     <section className="">
       <div>
         <img
-          src="https://images-magento.shoppersstop.com/pub/media/catalog/product/S25326752YACWHI/S25326752YACWHI_WHITE/S25326752YACWHI_WHITE.jpg"
-          alt=""
+          src={data?.data?.orderItem?.product?.imageUrl}
+          alt={data?.data?.orderItem?.product?.title}
           className="w-[20%] block mx-auto"
         />
 
         <div className="text-center font-nata-sans">
-          <h1 className="lg:text-2xl font-bold">Calvin Kelvin</h1>
+          <h1 className="lg:text-2xl font-bold">
+            {data?.data?.orderItem?.product?.brand}
+          </h1>
           <p className="font-semibold lg:text-xl text-gray-600">
-            Solid Blended Fabric Round Neck Men's T-Shirt
+            {data?.data?.orderItem?.product?.title}
           </p>
-          <p>Size : M</p>
+          <p>Size : {data?.data?.orderItem?.size}</p>
         </div>
 
         <div>
           <div className="lg:hidden">
-            <OrderVerticalStepper />
+            <OrderVerticalStepper
+              orderStatus={data?.data?.order?.orderStatus}
+            />
           </div>
 
           <div className="hidden lg:block">
-            <OrderHorizontalStepper />
+            <OrderHorizontalStepper
+              orderStatus={data?.data?.order?.orderStatus}
+            />
           </div>
         </div>
 
         <div className="px-2 lg:px-10 flex gap-x-4 py-2 items-center mx-2 lg:mx-10 bg-primary text-white">
           <FaRegCircleCheck className="size-10" />
           <div>
-            <h1>Delivered</h1>
+            <h1>{data?.data?.order?.orderStatus}</h1>
             <p>On Mon, 2nd Jun 2025</p>
           </div>
         </div>
@@ -55,11 +70,11 @@ const OrderDetailPage = () => {
         <div className="lg:px-10 px-2 border py-5 border-gray-300 font-nata-sans mb-3">
           <h1 className="text-2xl font-semibold">Delivery Address</h1>
           <div>
-            <h1 className="font-semibold">Mahesh Rayate | 9307438889</h1>
-            <p>
-              Flat A-603, Ashok Smruthi CHS, Ghodbunder Road, Kasarvadavali,
-              Thane West - 400615
-            </p>
+            <h1 className="font-semibold">
+              {data?.data?.order?.shippingAddress?.fullName} |{" "}
+              {data?.data?.order?.shippingAddress?.phone}
+            </h1>
+            <p>{data?.data?.order?.shippingAddress?.address}</p>
           </div>
         </div>
 
@@ -68,29 +83,36 @@ const OrderDetailPage = () => {
           <div className="w-full md:w-[50%] lg:w-[30%] ">
             <div className="flex justify-between">
               <p>Original Price</p>
-              <p>₹ 4999</p>
+              <p>₹ {data?.data?.orderItem?.price}</p>
             </div>
+
             <div className="flex justify-between">
               <p>Discount</p>
-              <p>- ₹3100</p>
+              <p>
+                - ₹
+                {data?.data?.orderItem?.price -
+                  data?.data?.orderItem?.discountedPrice}
+              </p>
             </div>
             <div className="flex justify-between">
               <p>Discounted Price</p>
-              <p>₹ 1899 </p>
+              <p>₹ {data?.data?.orderItem?.discountedPrice} </p>
             </div>
             <div className="flex justify-between">
               <p>Platform Fee</p>
-              <p>₹ 20</p>
+              <p>₹ Free</p>
             </div>
             <div className="font-bold flex justify-between">
               <p>Total Paid</p>
-              <p>₹ 1919</p>
+              <p>₹ {data?.data?.orderItem?.discountedPrice}</p>
             </div>
           </div>
         </div>
 
         <div className="lg:px-10 px-2 border py-5 border-gray-300 font-nata-sans">
-          <p className="text-gray-600">Order Id - #123434762364263409</p>
+          <p className="text-gray-600">
+            Order Id - {data?.data?.order?.paymentDetails?.transactionId}
+          </p>
         </div>
       </div>
     </section>

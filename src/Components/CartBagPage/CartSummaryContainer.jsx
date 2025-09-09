@@ -44,7 +44,7 @@ const CartSummaryContainer = ({ link, cart, disabled, selectedAddressId }) => {
         name: "The Trendy Store",
         description: "The Trendy Store",
         order_id: order.id, // backend order_id
-        callback_url: `${API_URL}/orders/paymentVerification`,
+        callback_url: `${API_URL}/orders/paymentVerification?addressId=${selectedAddressId}`,
         notes: { addressId: selectedAddressId }, // ✅ pass addressId correctly
         prefill: {
           name: "Mahesh Rayate", // replace with logged-in user data if available
