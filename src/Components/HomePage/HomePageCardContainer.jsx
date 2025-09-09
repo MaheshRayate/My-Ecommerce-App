@@ -17,7 +17,7 @@ const HomePageCardContainer = ({
 
   console.log(data);
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: false,
     speed: 1000,
     slidesToShow: 4,
