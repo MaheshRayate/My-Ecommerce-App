@@ -51,8 +51,11 @@ const steps = [
   },
 ];
 
-export default function OrderVerticalStepper() {
+export default function OrderVerticalStepper({ orderStatus }) {
   const [activeStep, setActiveStep] = React.useState(0);
+  const itemOrderStatus = steps.findIndex((el) => {
+    return el.label === orderStatus;
+  });
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -69,7 +72,7 @@ export default function OrderVerticalStepper() {
   return (
     <div className="border border-gray-300 mx-10 my-5 flex justify-center">
       <Box sx={{ maxWidth: 400 }}>
-        <Stepper activeStep={activeStep} orientation="vertical">
+        <Stepper activeStep={itemOrderStatus} orientation="vertical">
           {steps.map((step, index) => (
             <Step key={step.label}>
               <StepLabel
@@ -83,15 +86,6 @@ export default function OrderVerticalStepper() {
               </StepLabel>
               <StepContent>
                 {/* <Typography>{step.description}</Typography> */}
-                <Box sx={{ mb: 2 }}>
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 1, mr: 1 }}
-                  >
-                    {index === steps.length - 1 ? "Finish" : "Continue"}
-                  </Button>
-                </Box>
               </StepContent>
             </Step>
           ))}
